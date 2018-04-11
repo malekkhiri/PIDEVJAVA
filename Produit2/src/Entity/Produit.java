@@ -24,6 +24,18 @@ public class Produit {
    private int id_utilisateur;
    private String brochure;
 
+    public Produit(int id_Produit, int id_Magasin, String Nom_Produit, float prix, int Quantite, String Description,int Validated, String brochure) {
+        this.id_Produit = id_Produit;
+        this.id_Magasin = id_Magasin;
+        this.Nom_Produit = Nom_Produit;
+        this.validated=Validated;
+        this.prix = prix;
+        this.Quantite = Quantite;
+        this.Description = Description;
+        this.brochure = brochure;
+    }
+    
+
     public String getBrochure() {
         return brochure;
     }
@@ -80,12 +92,13 @@ public class Produit {
         this.Description = Description;
         
     }
-        public Produit(int id_Produit, String Nom_Produit, float prix, int Quantite, String Description,int validated) {
+        public Produit(int id_Produit, String Nom_Produit, float prix, int Quantite, String Description,int id_utilisateur,int validated) {
         this.id_Produit = id_Produit;
         this.Nom_Produit = Nom_Produit;
         this.prix = prix;
         this.Quantite = Quantite;
         this.Description = Description;
+        this.id_utilisateur=id_utilisateur;
         this.validated=validated;
         
     }
@@ -103,6 +116,17 @@ public class Produit {
   
 public Produit(String Nom_Produit, float prix, int Quantite, String Description, int id_utilisateur,int validated,String brochure) {
         this.Nom_Produit = Nom_Produit;
+        this.prix = prix;
+        this.Quantite = Quantite;
+        this.Description = Description;
+        this.id_utilisateur=id_utilisateur;
+        this.validated=validated;
+        this.brochure=brochure;
+      
+    }
+public Produit(String Nom_Produit,int id_Magasin, float prix, int Quantite, String Description, int id_utilisateur,int validated,String brochure) {
+        this.Nom_Produit = Nom_Produit;
+        this.id_Magasin=id_Magasin;
         this.prix = prix;
         this.Quantite = Quantite;
         this.Description = Description;

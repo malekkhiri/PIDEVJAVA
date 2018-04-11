@@ -5,6 +5,7 @@
  */
 package Gui;
 
+import Entity.Magasin;
 import Entity.Produit;
 import Entity.User;
 import java.io.IOException;
@@ -26,6 +27,15 @@ public class NewFXMain1 extends Application {
     
     public static User u=null;
     public static Produit p=null;
+    public static Magasin m=null;
+
+    public static Magasin getM() {
+        return m;
+    }
+
+    public static void setM(Magasin m) {
+        NewFXMain1.m = m;
+    }
 
     public static Produit getP() {
         return p;
@@ -61,7 +71,7 @@ public class NewFXMain1 extends Application {
 //        StackPane root = new StackPane();
 //        root.getChildren().add(btn);
         
-        Scene scene = new Scene(root, 300, 250);
+        Scene scene = new Scene(root, 1031, 738);
         
         primaryStage.setTitle("Souk El Madina");
         primaryStage.setScene(scene);

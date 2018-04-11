@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="588.0" prefWidth="844.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.ReclamationRSController">
+   <children>
+      <VBox fx:id="parent" layoutX="5.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="1025.0" style="-fx-background-color: white;" styleClass="main" stylesheets="@../Css/acceuil.css">
+         <children>
+            <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="89.0" prefWidth="1025.0" styleClass="menu_bar" stylesheets="@/Css/acceuil.css">
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" width="10.0" />
+               </effect>
+               <children>
+                  <ImageView fitHeight="111.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../utils/assets/logo2.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="25.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label fx:id="acceuil" prefHeight="43.0" prefWidth="120.0" styleClass="menu_item" text="Acceuil" textFill="#db4f61">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="35.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="11.0" left="30.0" top="11.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="services" prefHeight="43.0" prefWidth="120.0" styleClass="menu_item" text="Magasin" textFill="#837f7f">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="11.0" left="25.0" top="11.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="produits" prefHeight="43.0" prefWidth="120.0" styleClass="menu_item" text="Produits" textFill="#837f7f">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="11.0" left="23.0" top="11.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="evenements" prefHeight="43.0" prefWidth="120.0" styleClass="menu_item" text="Evenements" textFill="#837f7f">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="11.0" left="8.0" top="11.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="espace" prefHeight="49.0" prefWidth="201.0" styleClass="menu_item" text="Reclamations" textFill="#837f7f">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="11.0" left="8.0" top="11.0" />
+                     </padding>
+                  </Label>
+                  <Label text="1£" textFill="#db4f4f">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <FontAwesomeIconView glyphName="CART_PLUS" glyphStyle="-fx-fill:#db4f4f" size="2em">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+                  <FontAwesomeIconView glyphName="GEAR" glyphStyle="-fx-fill:#db4f4f" layoutX="944.0" layoutY="44.0" size="2em">
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="60.0" prefHeight="504.0" prefWidth="1024.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <SplitPane dividerPositions="0.35618729096989965" layoutY="91.0" prefHeight="496.0" prefWidth="1025.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TableView fx:id="tableViewReclamation" layoutX="19.0" layoutY="108.0" prefHeight="366.0" prefWidth="272.0">
+                    <columns>
+                      <TableColumn fx:id="tableColumnContenu" prefWidth="269.0" text="Contenu" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="searchBox" layoutX="81.0" layoutY="57.0" onKeyTyped="#searchRecord" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="419.0">
+               <children>
+                  <GridPane layoutX="43.0" layoutY="36.0" prefHeight="289.0" prefWidth="361.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Emetteur" />
+                        <Label text="Contenu" GridPane.rowIndex="1" />
+                        <Label text="Rembourssement" GridPane.rowIndex="2" />
+                        <Label fx:id="labelReclamationEmetteur" GridPane.columnIndex="1" />
+                        <Label fx:id="labelReclamationContenu" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="labelReclamationRembourssement" prefHeight="17.0" prefWidth="122.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+                  <Button fx:id="buttonrepondre" layoutX="102.0" layoutY="357.0" mnemonicParsing="false" onAction="#handlebuttonrep" text="Répondre" />
+                  <Button fx:id="buttonsuppriimer" layoutX="292.0" layoutY="357.0" mnemonicParsing="false" onAction="#handlebuttonsupp" text="Supprimer" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

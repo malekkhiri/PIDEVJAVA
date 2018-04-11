@@ -40,6 +40,6 @@
       <JFXTextField fx:id="Description" focusColor="#d02121" layoutX="506.0" layoutY="367.0" prefHeight="34.0" prefWidth="317.0" />
       <JFXTextField fx:id="Quantitee" focusColor="#d02121" layoutX="506.0" layoutY="257.0" prefHeight="34.0" prefWidth="317.0" />
       <JFXTextField fx:id="Prix" focusColor="#d02121" layoutX="506.0" layoutY="170.0" prefHeight="34.0" prefWidth="317.0" />
-      <Label fx:id="idp" layoutX="705.0" layoutY="56.0" text="Label" />
+      <Label fx:id="idp" layoutX="705.0" layoutY="56.0" text="Label" visible="false" />
    </children>
 </AnchorPane>

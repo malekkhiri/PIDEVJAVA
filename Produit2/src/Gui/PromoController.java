@@ -169,7 +169,7 @@ private int day;
         
           Promotion promotion = new Promotion(java.sql.Date.valueOf(debut.getValue()),java.sql.Date.valueOf(s.getValue()),(float)0.5,produit.getId_Produit(),user.getId());
             ServicePromo sp=new ServicePromo();
-            sp.insertEvenement(promotion);
+            sp.insertPromo(promotion);
           btnClicked=true;
             dialogStage.close();
     }}

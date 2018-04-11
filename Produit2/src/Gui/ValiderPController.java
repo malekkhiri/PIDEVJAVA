@@ -19,13 +19,18 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import service.ServiceProduit;
 
@@ -42,14 +47,10 @@ public class ValiderPController implements Initializable {
 
     @FXML
     private TableColumn<Produit, String> NomP;
-     @FXML
-    private TableColumn<User, String> NomV;
 
     @FXML
     private TableColumn<Produit,String > PrixP;
 
-    @FXML
-    private TableColumn<Produit, String> QP;
 
     @FXML
     private Label LPNom;
@@ -63,39 +64,51 @@ public class ValiderPController implements Initializable {
     @FXML
     private Label LPDes;
 
+     
     @FXML
-    private Button ajout;
-
-    @FXML
-    private Button modif;
-
-    @FXML
-    private Button supp;
-     @FXML
-    private AnchorPane pane;
-        @FXML
+    private ImageView imageViewP;
     private Label lidp;
         private int idp;
     private List<Produit> listProduit;
     private ObservableList<Produit> observablelistproduit;
+    @FXML
+    private HBox ev;
+    @FXML
+    private TableColumn<?, ?> pseudoV;
+    @FXML
+    private Button btnRetour2;
+    @FXML
+    private Button btnRetour1;
+    @FXML
+    private Label nvendeur;
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       
         try {
             ListeProduit();
-            TableViewP.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue) ->selectAction(newValue));
         } catch (SQLException ex) {
             Logger.getLogger(ValiderPController.class.getName()).log(Level.SEVERE, null, ex);
         }
+            TableViewP.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue) ->{
+                
+                try {
+                    selectAction(newValue);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ValiderPController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
+            });
+        
     }    
     
-    @FXML
     private void ListeProduit() throws SQLException{
         
      
         NomP.setCellValueFactory(new PropertyValueFactory<>("Nom_Produit"));
         PrixP.setCellValueFactory(new PropertyValueFactory<>("Prix"));
+        pseudoV.setCellValueFactory(new PropertyValueFactory<>("id_utilisateur"));
         ServiceProduit Sp=new ServiceProduit();
        
         listProduit=Sp.selectProduitNV();
@@ -105,17 +118,17 @@ public class ValiderPController implements Initializable {
         
     }
  
- @FXML
- private void selectAction(Produit produit){
+ private void selectAction(Produit produit) throws SQLException{
      LPNom.setText(produit.getNom_Produit());
      LPPrix.setText(String.valueOf(produit.getPrix()));
      LPQ.setText(String.valueOf(produit.getQuantite()));
      LPDes.setText(String.valueOf(produit.getDescription()));
-     lidp.setText(String.valueOf(produit.getId_Produit()));
+//     lidp.setText(String.valueOf(produit.getId_Produit()));
+     ServiceProduit sc= new ServiceProduit();
+     nvendeur.setText(String.valueOf(sc.recupusername(produit.getId_Produit())));
      
  
  }
- @FXML
  private boolean ajoutAction(Produit produit) throws IOException{
    FXMLLoader loader =new FXMLLoader();
   loader.setLocation(AjoutDocumentController.class.getResource("AjoutDocument.fxml"));
@@ -134,7 +147,6 @@ public class ValiderPController implements Initializable {
  return controller.isBtnClicked();
 
  }
-  @FXML
  private void handleAjoutBtn() throws IOException, SQLException{
 Produit produit=new Produit();
      boolean btnClicked=ajoutAction(produit);
@@ -143,8 +155,6 @@ Produit produit=new Produit();
 ListeProduit(); 
      } }
      
-      @FXML
-
   private boolean modifAction(Produit produit) throws IOException{
    FXMLLoader loader =new FXMLLoader();
   loader.setLocation(AjoutDocumentController.class.getResource("ModifierDocument.fxml"));
@@ -164,9 +174,6 @@ ListeProduit();
 
  }
  
-     @FXML
-    
-     
      private void handleModifierBtn() throws IOException, SQLException{
      
  Produit produit=TableViewP.getSelectionModel().getSelectedItem();
@@ -215,12 +222,34 @@ ListeProduit();
         produit.setValidated(1);
         ServiceProduit Sc=new ServiceProduit();
         Sc.updatePV(produit);
+         System.out.println(produit.getId_utilisateur());
         ListeProduit();
          System.out.println(produit.getValidated());
      }
 
      }
      
+     
+     @FXML
+    private void ClickProduit(MouseEvent event) throws IOException {
+
+ try {
+              Parent home_page_parent = FXMLLoader.load(getClass().getResource("HomeAdmin.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          
+            
+                //app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();  
+            
+        
+            
+        } catch (IOException ex) {
+           
+        
+    }
+    }
      
     
 }

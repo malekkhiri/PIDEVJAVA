@@ -1,0 +1,47 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 21, 2018, 10:29:13 PM
+    Author     : iheb bf
+*/
+
+.btns{
+    
+    -fx-background-color:transparent;
+}
+.btns:hover{
+    
+    -fx-background-color: #202332;
+}
+
+#store:hover{
+     -fx-background-color: #202332;
+}
+
+#main-menu-label{
+        -fx-font-size:25;
+        -fx-font-weight:bold;
+        -fx-text-fill: white;
+}
+
+
+
+
+#headerBtns{
+    -fx-opacity: 1;
+}
+#headerBtns:hover{
+    -fx-opacity: 0.5;
+         
+
+}
+
+.parent{
+    -fx-background-color: #323754;
+}
+.header{
+    -fx-background-color: #323754;
+}

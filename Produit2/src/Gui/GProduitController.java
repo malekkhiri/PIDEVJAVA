@@ -9,23 +9,33 @@ import DataBase.DataSource;
 import Entity.Commentaire;
 import Entity.Produit;
 import Entity.Promotion;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import service.ServiceCommentaire;
 import service.ServiceProduit;
@@ -74,8 +84,6 @@ public class GProduitController implements Initializable {
         @FXML
     private Label lidp;
         public static int idp;
-          @FXML
-    private Button supp1;
 
     public static int getIdp() {
         return idp;
@@ -87,42 +95,56 @@ public class GProduitController implements Initializable {
     private List<Produit> listProduit;
     private ObservableList<Produit> observablelistproduit;
     
+    
       @FXML
-    private TableView<Commentaire> TableViewCom;
+    private ImageView imagePV;
 
-    @FXML
-    private TableColumn<Commentaire,String> UserCol;
-
-    @FXML
-    private TableColumn<Commentaire,String> CommCol;
-
-    @FXML
-    private Label usernameV;
-
-    @FXML
-    private Label CommentaireV;
   private List<Commentaire> listCommentaire;
     private ObservableList<Commentaire> observablelistcommentaire;
+    @FXML
+    private AnchorPane pane1;
+    @FXML
+    private VBox parent;
+    @FXML
+    private Label acceuil;
+    @FXML
+    private Label services;
+    @FXML
+    private Label produits;
+    @FXML
+    private Label evenements;
+    @FXML
+    private Label espace;
+    @FXML
+    private Label NomMagasin;
+    @FXML
+    private Button ajoutPromo;
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ListeProduit();
-TableViewP.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue) ->selectAction(newValue));
- ListeCommentaire();
-TableViewCom.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue) ->selectcommentAction(newValue));
-   
+        TableViewP.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue) ->{
+            try {
+                selectAction(newValue);
+            } catch (SQLException ex) {
+                Logger.getLogger(GProduitController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+// ListeCommentaire();
+//TableViewCom.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue) ->selectcommentAction(newValue));
+//
     
     }    
     
-    @FXML
     private void ListeProduit(){
     
         NomP.setCellValueFactory(new PropertyValueFactory<>("Nom_Produit"));
         PrixP.setCellValueFactory(new PropertyValueFactory<>("Prix"));
         QP.setCellValueFactory(new PropertyValueFactory<>("Quantite"));
         ServiceProduit Sp=new ServiceProduit();
-        listProduit=Sp.selectProduit();
+        NewFXMain1 main = new NewFXMain1();
+        listProduit=Sp.selectProduitUse(main.u.getId());
       
         
         observablelistproduit=FXCollections.observableArrayList(listProduit);
@@ -130,20 +152,25 @@ TableViewCom.getSelectionModel().selectedItemProperty().addListener((observable,
         
         
     }
- @FXML
- private void selectAction(Produit produit){
+ private void selectAction(Produit produit) throws SQLException{
      LPNom.setText(produit.getNom_Produit());
      LPPrix.setText(String.valueOf(produit.getPrix()));
      LPQ.setText(String.valueOf(produit.getQuantite()));
      LPDes.setText(String.valueOf(produit.getDescription()));
      lidp.setText(String.valueOf(produit.getId_Produit()));
- 
+     ServiceProduit sc =new ServiceProduit();
+     NomMagasin.setText(String.valueOf(sc.recupMagasinNom(produit.getId_Magasin())));
+     
+ File file = new File("C:/wamp64/www/Final/PIDEV/web/bundles/uploads/brochures/"+produit.getBrochure());
+
+        Image i = new Image(file.toURI().toString(),724,523,false,false) {};
+this.imagePV.setImage(i);
+        System.out.println(file);
      
      
      
  
  }
- @FXML
  private boolean ajoutAction(Produit produit) throws IOException{
    FXMLLoader loader =new FXMLLoader();
   loader.setLocation(AjoutDocumentController.class.getResource("AjoutDocument.fxml"));
@@ -171,7 +198,6 @@ Produit produit=new Produit();
 ListeProduit(); 
      } }
  
- @FXML
  private boolean ajoutPromoAction(Promotion promotion) throws IOException{
    FXMLLoader loader =new FXMLLoader();
   loader.setLocation(PromoController.class.getResource("Promo.fxml"));
@@ -203,8 +229,6 @@ ListeProduit();
      } }
  
      
-      @FXML
-
   private boolean modifAction(Produit produit) throws IOException{
    FXMLLoader loader =new FXMLLoader();
   loader.setLocation(AjoutDocumentController.class.getResource("ModifierDocument.fxml"));
@@ -237,6 +261,7 @@ ListeProduit();
         if(btnClicked){
             
             ServiceProduit sc=new ServiceProduit();
+            
             sc.updateProduit(produit);
             System.out.println(produit.getNom_Produit());
         ListeProduit();
@@ -254,18 +279,20 @@ ListeProduit();
      
    @FXML
  
-     private void handleSuppBtn() throws IOException{
+     private void handleSuppBtn() throws IOException, SQLException{
      Produit produit=TableViewP.getSelectionModel().getSelectedItem();
     
            if (produit!=null)
      {ServiceProduit Sc = new ServiceProduit();
+                 ServiceCommentaire sC=new ServiceCommentaire();
+                
+                 sC.supprimerCommentaire(sC.selectCommDet(produit.getId_Produit()));
          Sc.supprimerProduit(produit);
          ListeProduit();
      }
 
      }
-      @FXML
-       Produit idproduit() throws IOException{
+      Produit idproduit() throws IOException{
            Produit p =null ;
      Produit produit=TableViewP.getSelectionModel().getSelectedItem();
      p=produit;
@@ -276,87 +303,132 @@ ListeProduit();
        
        
        
-        @FXML
-
-  private boolean CoomAction(Commentaire commentaire) throws IOException{
-   FXMLLoader loader =new FXMLLoader();
-  loader.setLocation(AjoutCommentController.class.getResource("AjoutComment.fxml"));
-  AnchorPane pane=(AnchorPane) loader.load();
-       Stage dialogStage=new Stage();
-  dialogStage.setTitle("Ajouter un commentaire");
-     Scene scene = new Scene(pane);
-     dialogStage.setScene(scene);
-     dialogStage.setResizable(false);
-          AjoutCommentController controller=loader.getController();
-     controller.setDialogStage(dialogStage);
-     controller.setComment(commentaire);
-   
-     
- dialogStage.showAndWait();
- return controller.isBtnClicked();
-
- }
+//        @FXML
+//
+//  private boolean CoomAction(Commentaire commentaire) throws IOException{
+//   FXMLLoader loader =new FXMLLoader();
+//  loader.setLocation(AjoutCommentController.class.getResource("AjoutComment.fxml"));
+//  AnchorPane pane=(AnchorPane) loader.load();
+//       Stage dialogStage=new Stage();
+//  dialogStage.setTitle("Ajouter un commentaire");
+//     Scene scene = new Scene(pane);
+//     dialogStage.setScene(scene);
+//     dialogStage.setResizable(false);
+//          AjoutCommentController controller=loader.getController();
+//     controller.setDialogStage(dialogStage);
+//     controller.setComment(commentaire);
+//   
+//     
+// dialogStage.showAndWait();
+// return controller.isBtnClicked();
+//
+// }
  
-     @FXML
-    
-     
-     private void handleCommentBtn() throws IOException{
-     
-      Produit produit=TableViewP.getSelectionModel().getSelectedItem();
-NewFXMain1 main = new NewFXMain1();
-main.p=produit;
-Commentaire commentaire=new Commentaire();
-     boolean btnClicked=CoomAction(commentaire);
-     if(btnClicked){
-   
-ListeCommentaire(); 
-     } }
+//     @FXML
+//    
+//     
+//     private void handleCommentBtn() throws IOException{
+//     
+//      Produit produit=TableViewP.getSelectionModel().getSelectedItem();
+//NewFXMain1 main = new NewFXMain1();
+//main.p=produit;
+//Commentaire commentaire=new Commentaire();
+//     boolean btnClicked=CoomAction(commentaire);
+//     if(btnClicked){
+//   
+//ListeCommentaire(); 
+//     } }
      
   
      
      
-      @FXML
-    private void ListeCommentaire(){
-     
-        Produit produit=TableViewP.getSelectionModel().getSelectedItem();
-     NewFXMain1 main=new NewFXMain1();
-     main.p=produit;
-     
-     if(produit!=null){
-        UserCol.setCellValueFactory(new PropertyValueFactory<>("commentator_id"));
-        CommCol.setCellValueFactory(new PropertyValueFactory<>("Contenu"));
+//      @FXML
+//    private void ListeCommentaire(){
+//     
+//        Produit produit=TableViewP.getSelectionModel().getSelectedItem();
+//     NewFXMain1 main=new NewFXMain1();
+//     main.p=produit;
+//     
+//     if(produit!=null){
+//        UserCol.setCellValueFactory(new PropertyValueFactory<>("commentator_id"));
+//        CommCol.setCellValueFactory(new PropertyValueFactory<>("Contenu"));
+//       
+//       ServiceCommentaire sc=new ServiceCommentaire();
+//       
+//           
+//          
+//        listCommentaire=sc.selectCommentaireP(produit.getId_Produit());
+//       
+//        
+//        observablelistcommentaire=FXCollections.observableArrayList(listCommentaire);
+//       TableViewCom.setItems( observablelistcommentaire);
+//        
+//     }
+//    }
+// @FXML
+// private void selectcommentAction(Commentaire commentaire){
+//     usernameV.setText(String.valueOf(commentaire.getCommentator_id()));
+//     CommentaireV.setText(commentaire.getContenu());
+//     
+// 
+// }
+//      @FXML
+// 
+//     private void handleSuppCBtn() throws IOException{
+//   Commentaire commentaire=TableViewCom.getSelectionModel().getSelectedItem();
+//    
+//           if (commentaire!=null)
+//     {NewFXMain1 main=new NewFXMain1();
+//         
+//         ServiceCommentaire Sc = new ServiceCommentaire();
+//     
+//         Sc.supprimerCommentaire(commentaire);
+//         }
+//         ListeCommentaire();
+//     }
        
-       ServiceCommentaire sc=new ServiceCommentaire();
        
-           
+            @FXML
+    private void ClickMenu(MouseEvent event) throws IOException {
+
+ try {
+              Parent home_page_parent = FXMLLoader.load(getClass().getResource("Acceuil.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
           
-        listCommentaire=sc.selectCommentaireP(produit.getId_Produit());
-       
+            
+                //app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();  
+            
         
-        observablelistcommentaire=FXCollections.observableArrayList(listCommentaire);
-       TableViewCom.setItems( observablelistcommentaire);
+            
+        } catch (IOException ex) {
+           
         
-     }
     }
- @FXML
- private void selectcommentAction(Commentaire commentaire){
-     usernameV.setText(String.valueOf(commentaire.getCommentator_id()));
-     CommentaireV.setText(commentaire.getContenu());
-     
- 
- }
-      @FXML
- 
-     private void handleSuppCBtn() throws IOException{
-   Commentaire commentaire=TableViewCom.getSelectionModel().getSelectedItem();
+    }
     
-           if (commentaire!=null)
-     {NewFXMain1 main=new NewFXMain1();
-         
-         ServiceCommentaire Sc = new ServiceCommentaire();
-     
-         Sc.supprimerCommentaire(commentaire);
-         }
-         ListeCommentaire();
-     }
+    
+           
+            @FXML
+    private void ClickProduit(MouseEvent event) throws IOException {
+
+ try {
+              Parent home_page_parent = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          
+            
+                //app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();  
+            
+        
+            
+        } catch (IOException ex) {
+           
+        
+    }
+    }
 }

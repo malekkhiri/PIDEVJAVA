@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import service.ServiceProduit;
@@ -155,14 +156,31 @@ private int ide;
 @FXML
   private void ModifierProduit(ActionEvent event){
      
-
+if(ControleSaisie()){
                 produit.setNom_Produit(Name.getText());
                 produit.setPrix((float)Double.parseDouble(Prix.getText()));
                 produit.setQuantite(Integer.parseInt(Quantitee.getText()));
                 produit.setDescription(Description.getText());
         btnClicked=true;
         dialogStage.close();
+    }}
+      private boolean ControleSaisie() {
+        boolean valide = true;
+//       
+        if(Description.getText().equals("")||Description.getText().equals("")||Prix.getText().equals("")||Name.getText().equals(""))
+        {
+            
+              valide=false;
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Champ obligatoire");
+            alert.setContentText("veuiller remplir tous les champs!");
+
+            alert.showAndWait();
+        }
+        
+        return valide;
     }
-    
+      
     
 }

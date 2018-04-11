@@ -14,15 +14,19 @@ import java.text.DateFormat;
 import java.text.FieldPosition;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import service.ServiceCommentaire;
+import static sun.security.krb5.KrbException.errorMessage;
 
 /**
  * FXML Controller class
@@ -56,6 +60,8 @@ public class AjoutCommentController implements Initializable {
     public static void setCommenta(Commentaire commenta) {
         AjoutCommentController.commenta = commenta;
     }
+    @FXML
+    private Label erreur;
     
     public Produit getProduit() {
         return produit;
@@ -122,6 +128,8 @@ public class AjoutCommentController implements Initializable {
      @FXML
     private void AjouterCommentaire (ActionEvent event) throws IOException{
         
+if(ControleSaisie()){
+    
 
 NewFXMain1 main=new NewFXMain1();
   
@@ -137,8 +145,22 @@ NewFXMain1 main=new NewFXMain1();
      sc.insertCommentaire(c);  
         btnClicked=true;
         dialogStage.close();
+}
    
     } 
-    
-    
+   private boolean ControleSaisie() {
+        boolean valide = true;
+        if(comm.getText().equals(""))
+        {
+            valide=false;
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Champ obligatoire");
+            alert.setContentText("veuiller remplir votre commentaire!");
+
+            alert.showAndWait();
+        }
+        return valide;
+}
+   
 }

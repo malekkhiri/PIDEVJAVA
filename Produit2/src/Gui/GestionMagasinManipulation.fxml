@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="277.0" prefWidth="428.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.GestionMagasinManipulationController">
+    <stylesheets>
+        <URL value="@gestionmagasinmanipulation.css" />
+    </stylesheets>
+   <children>
+      <ImageView fitHeight="277.0" fitWidth="481.0" opacity="0.2" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@Souk2.jpg" />
+         </image>
+      </ImageView>
+      <GridPane layoutX="78.0" layoutY="11.0" prefHeight="199.0" prefWidth="263.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="labelMagasinNom" text="Nom" textFill="#d01111">
+               <font>
+                  <Font name="Bodoni MT Bold Italic" size="14.0" />
+               </font></Label>
+            <Label fx:id="labelMagasinAdresse" text="Adresse" textFill="#d01111" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Bodoni MT Bold Italic" size="14.0" />
+               </font></Label>
+            <Label fx:id="labelMagasinRegion" text="Region" textFill="#d01111" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Bodoni MT Bold Italic" size="14.0" />
+               </font></Label>
+            <Label fx:id="labelMagasinVille" text="Ville" textFill="#d01111" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Bodoni MT Bold Italic" size="14.0" />
+               </font></Label>
+            <TextField fx:id="textFieldMagasinNom" GridPane.columnIndex="1" />
+            <TextField fx:id="textFieldMagasinAdresse" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="textFieldMagasinRegion" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldMagasinVille" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+            <Label fx:id="labelMagasinTelephone" text="Telephone" textFill="#d31717" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Bodoni MT Bold Italic" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldMagasinTelephone" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         </children>
+      </GridPane>
+      <Button fx:id="buttonConfirmer" layoutX="60.0" layoutY="222.0" mnemonicParsing="false" onAction="#handleButtonConfirmer" text="Confirmer">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="15.0" />
+         </font></Button>
+      <Button fx:id="buttonAnnuler" layoutX="303.0" layoutY="222.0" mnemonicParsing="false" onAction="#handleButtonAnnuler" text="Annuler">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="15.0" />
+         </font></Button>
+   </children>
+</AnchorPane>

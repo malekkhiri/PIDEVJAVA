@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="473.0" style="-fx-background-color: #9a1717;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.RegistrationVendeurFXMLController">
+   <children>
+      <GridPane layoutX="37.0" layoutY="43.0" prefHeight="269.0" prefWidth="363.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="200.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="0.0" prefWidth="0.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="Nom" textFill="#fffdfd" />
+            <Label text="Prenom" textFill="#fffdfd" GridPane.rowIndex="1" />
+            <Label text="Username" textFill="#fffdfd" GridPane.rowIndex="2" />
+            <Label text="Email" textFill="#fffdfd" GridPane.rowIndex="3" />
+            <Label text="Password" textFill="#fffdfd" GridPane.rowIndex="4" />
+            <Label text="Numero du telephone" textFill="#fffdfd" GridPane.rowIndex="5" />
+            <Label text="Ville" textFill="#fffdfd" GridPane.rowIndex="6" />
+            <Label text="Date de naissaince" textFill="#fffdfd" GridPane.rowIndex="7" />
+            <TextField fx:id="textFieldPrenom" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="textFieldNom" GridPane.columnIndex="1" />
+            <TextField fx:id="textFieldUsername" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="textFieldEmail" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="textFieldTel" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <ComboBox fx:id="comboVille" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <PasswordField fx:id="textFieldPassword" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <DatePicker fx:id="textFieldDatenaissaince" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+         </children>
+      </GridPane>
+      <Button fx:id="Confirmer" layoutX="268.0" layoutY="343.0" mnemonicParsing="false" onAction="#Confirmer" text="Confirmer" />
+      <Button fx:id="btnRetour" layoutX="179.0" layoutY="343.0" mnemonicParsing="false" onAction="#Retour" text="Retour" />
+   </children>
+</AnchorPane>

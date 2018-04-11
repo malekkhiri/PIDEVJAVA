@@ -125,8 +125,8 @@ if(p.getValidated()==1){
       public String recupusername(int id) throws SQLException {
         String p = null;
         try {
-            String req = "Select `username`   from `user` u join `produit` e on e.username = u.id"
-                    + " where id_Produit=" + id;
+            String req = "Select `username`   from `user` u join `produit` e on e.id_utilisateur = u.id"
+                    + " where e.id_utilisateur='" + id+"'";
 
             statement=conn.createStatement();
             rs=statement.executeQuery(req);
@@ -135,11 +135,11 @@ if(p.getValidated()==1){
                 System.out.println(p);
             }
 
-            return p;
+            
         } catch (SQLException ex) {
             System.out.println(ex);
             return "erreeeeeur pseudo";
-        }
+        }return p;
     }
       
      public void updatePV(Produit produit){
@@ -167,7 +167,7 @@ if(p.getValidated()==1){
             rs=statement.executeQuery(req);
             while(rs.next()){
                 Produit p=new Produit((rs.getInt("id_Produit")),(rs.getString("Nom_Produit")),(rs.getFloat("Prix"))
-                        ,(rs.getInt("Quantite")),(rs.getString("Description")),(rs.getInt("Validated")));
+                        ,(rs.getInt("Quantite")),(rs.getString("Description")),rs.getInt("id_utilisateur"),(rs.getInt("Validated")));
 
 if(p.getValidated() == 0){
                 liste.add(p);
@@ -237,5 +237,135 @@ if(p.getValidated() == 0){
             System.out.println("erreur");
         }
     }
-   
+    public List<Produit> selectProduitUse(int idu){
+        String req="select * from produit where id_utilisateur='"+idu+"'";
+        List<Produit> liste= new ArrayList<>();
+        try {
+            statement=conn.createStatement();
+            rs=statement.executeQuery(req);
+            while(rs.next()){
+                Produit p=new Produit((rs.getInt("id_Produit")),(rs.getInt("id_magasin")),(rs.getString("Nom_Produit")),(rs.getFloat("Prix"))
+                        ,(rs.getInt("Quantite")),(rs.getString("Description")),(rs.getInt("Validated")),(rs.getString("brochure")));
+                NewFXMain1 main=new NewFXMain1();
+                
+
+if(p.getValidated()==1){
+                liste.add(p);
+            }}
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceProduit.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return liste;
+    }
+    
+    
+     public void insertProduiImaMagas(Produit Produit){
+
+        String req="INSERT INTO"
+                + " `produit`(`Nom_Produit`, `prix`, `Quantite`, `Description`,`id_utilisateur`,`Validated`,`brochure`,`id_Magasin`) "
+                + "VALUES (?,?,?,?,?,?,?,?)";
+        
+        try {
+            PreparedStatement ste= conn.prepareStatement(req);
+            ste.setString(1, Produit.getNom_Produit());
+            ste.setFloat(2, Produit.getPrix());
+            ste.setInt(3,Produit.getQuantite() );
+             ste.setString(4,Produit.getDescription() );
+             ste.setInt(6,Produit.getValidated() );
+
+             ste.setInt(5,Produit.getId_utilisateur());
+             ste.setString(7,Produit.getBrochure());
+    ste.setInt(8,Produit.getId_Magasin());
+             
+              
+//            fis = new FileInputStream(file);
+//            ste.setBinaryStream(5,(InputStream)fis , (int)file.length());
+
+             ste.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceProduit.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("erreur");
+        }
+    }
+     
+     
+      public List<Produit> selectProduitUseMagas(int idu){
+        String req="select * from produit where id_magasin='"+idu+"'";
+        List<Produit> liste= new ArrayList<>();
+        try {
+            statement=conn.createStatement();
+            rs=statement.executeQuery(req);
+            while(rs.next()){
+                Produit p=new Produit((rs.getInt("id_Produit")),(rs.getInt("id_magasin")),(rs.getString("Nom_Produit")),(rs.getFloat("Prix"))
+                        ,(rs.getInt("Quantite")),(rs.getString("Description")),(rs.getInt("Validated")),(rs.getString("brochure")));
+                NewFXMain1 main=new NewFXMain1();
+                
+
+if(p.getValidated()==1){
+                liste.add(p);
+            }}
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceProduit.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return liste;
+    }
+      
+      
+       public String recupMagasinNom(int id) throws SQLException {
+        String p = null;
+        try {
+            String req = "Select `nom_magasin`   from `magasin` M join `produit` P on M.id_magasin = P.id_magasin"
+                    + " where P.id_magasin='" +id+"'";
+
+            statement=conn.createStatement();
+            rs=statement.executeQuery(req);
+            while (rs.next()) {
+                p = rs.getString("nom_magasin");
+                System.out.println(p);
+            }
+
+            return p;
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return "erreeeeeur pseudo";
+        }
+    }
+       
+       public String recupTel(int id) throws SQLException {
+        String p = null;
+        try {
+            String req = "Select `tel`   from `user` u join `produit` e on e.username = u.id"
+                    + " where id_Produit=" + id;
+
+            statement=conn.createStatement();
+            rs=statement.executeQuery(req);
+            while (rs.next()) {
+                p = rs.getString("tel");
+                System.out.println(p);
+            }
+
+            return p;
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return "erreeeeeur pseudo";
+        }
+        
+    }
+       
+       
+         public void supprimerProduitM(int idM){
+        List<Produit> liste=new ArrayList<>();
+        String req="DELETE FROM `produit` WHERE id_magasin='"+idM+"'";
+        try {
+            PreparedStatement ste= conn.prepareStatement(req);
+            
+        
+            ste.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceProduit.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

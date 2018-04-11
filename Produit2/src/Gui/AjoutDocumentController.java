@@ -26,8 +26,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -101,11 +105,11 @@ private int ide;
     public void setProduit(Produit produit) {
 
         this.produit = produit;
-        this.Name.setText(produit.getNom_Produit());
-  this.Prix.setText(String.valueOf(produit.getPrix()));
-          this.Quantitee.setText(String.valueOf(produit.getQuantite()));
-          this.Description.setText(String.valueOf(produit.getDescription()));
-          
+//        this.Name.setText(produit.getNom_Produit());
+//  this.Prix.setText(String.valueOf(produit.getPrix()));
+//          this.Quantitee.setText(String.valueOf(produit.getQuantite()));
+//          this.Description.setText(String.valueOf(produit.getDescription()));
+//          
 
          
           
@@ -163,6 +167,8 @@ private int ide;
     public void setBtn(JFXButton btn) {
         this.btn = btn;
     }
+        @FXML
+    private ImageView imageV;
     
 
    
@@ -192,15 +198,21 @@ private int ide;
 
             //the code to copy the selected file goes here//
             nomImage.setText(selectedFile.getName());
+        
+       String Path =f.getAbsolutePath();
+            System.err.println(Path);
+            File file = new File(Path);
+
+        Image i = new Image(file.toURI().toString(),210,216,false,false) {};
+this.imageV.setImage(i);
 
         } else{
             /*file1.setText("no file attached");*/
         }
+          
     }
     
-    private void CopyI(){
-        
-    }
+   
     
     
     @FXML
@@ -224,16 +236,17 @@ NewFXMain1 main=new NewFXMain1();
         }
     
      
-      
+      if(ControleSaisie()){
 
-        Produit p=new Produit(Name.getText(),(float)Double.parseDouble(Prix.getText()),Integer.parseInt(Quantitee.getText()),Description.getText(),U.getId(),0,uuu+".jpeg");
+        Produit p=new Produit(Name.getText(),main.m.getId_magasin(),(float)Double.parseDouble(Prix.getText()),Integer.parseInt(Quantitee.getText()),Description.getText(),U.getId(),0,uuu+".jpeg");
         
        ServiceProduit sp=new ServiceProduit();                 
-sp.insertProduiIma(p);
+sp.insertProduiImaMagas(p);
         btnClicked=true;
         dialogStage.close();
    
     } 
+    }
       
    
     @Override
@@ -244,5 +257,67 @@ sp.insertProduiIma(p);
         
         // TODO
     }    
+    private boolean ControleSaisie() {
+        boolean valide = true;
+//        if(Name.getText().equals(""))
+//        {
+//            valide=false;
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("Erreur");
+//            alert.setHeaderText("Champ obligatoire");
+//            alert.setContentText("veuiller remplir tous les champs!");
+//
+//            alert.showAndWait();
+//        } if(Prix.getText().equals(""))
+//        {
+//            valide=false;
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("Erreur");
+//            alert.setHeaderText("Champ obligatoire");
+//            alert.setContentText("veuiller remplir tous les champs!");
+//
+//            alert.showAndWait();
+//        } if(Description.getText().equals(""))
+//        {
+//            valide=false;
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("Erreur");
+//            alert.setHeaderText("Champ obligatoire");
+//            alert.setContentText("veuiller remplir tous les champs!");
+//
+//            alert.showAndWait();
+//        } if(Description.getText().equals(""))
+//        {
+//            valide=false;
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("Erreur");
+//            alert.setHeaderText("Champ obligatoire");
+//            alert.setContentText("veuiller remplir tous les champs!");
+//
+//            alert.showAndWait();
+//        } if(nomImage.getText().equals(""))
+//        {
+//            valide=false;
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("Erreur");
+//            alert.setHeaderText("Champ obligatoire");
+//            alert.setContentText("veuiller remplir tous les champs!");
+//
+//            alert.showAndWait();
+//        }
+        if(nomImage.getText().equals("nom image")||Description.getText().equals("")||Description.getText().equals("")||Prix.getText().equals("")||Prix.getText().equals("0")||Name.getText().equals(""))
+        {
+            
+              valide=false;
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Champ obligatoire");
+            alert.setContentText("veuiller remplir tous les champs!");
+
+            alert.showAndWait();
+        }
+        return valide;
+    }
+
     
 }

@@ -30,7 +30,7 @@ public class ServicePromo {
     }
     
     
-     public void insertEvenement(Promotion promo)throws SQLException{
+     public void insertPromo(Promotion promo)throws SQLException{
         String req="INSERT INTO"
                 + " `promotion`( `id_produit`,`date_debut`, `date_fin`, `Pourcentage`, `id_utilisateur`) "
                 + "VALUES (?,?,?,?,?)";
@@ -45,7 +45,7 @@ public class ServicePromo {
              ste.setInt(1, promo.getId_Produit()); 
               ste.setInt(5, promo.getId_utilisateur()); 
             ste.executeUpdate();
-             System.out.println("evenement créé!!!!");
+             System.out.println("Produit créé!!!!");
         
    
     }

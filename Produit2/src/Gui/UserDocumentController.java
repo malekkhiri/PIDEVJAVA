@@ -21,11 +21,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import service.ServiceUser;
+
+import javafx.scene.control.Alert;
+
 
 
 /**
@@ -46,11 +50,14 @@ private boolean btnclicked;
     private JFXPasswordField pass;
         @FXML
     private Button login;
+        
             @FXML
     private AnchorPane pane;
             private String loggeduser;
             private User Us;
             private Stage dialogStage;
+    @FXML
+    private Button btnCreerCompte;
 
     public Stage getDialogStage() {
         return dialogStage;
@@ -91,7 +98,7 @@ private boolean btnclicked;
     @FXML
     private void LoginAction (ActionEvent event) throws IOException, SQLException{
        
-        
+        if(ControleSaisie()){
         String  username=Nom.getText();
        String password=pass.getText();
        
@@ -155,7 +162,7 @@ iduser=Us.getId();
         stage.close();
 
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginFXML.fxml"));
             Parent root2 = (Parent) fxmlLoader.load();
             Stage stage2 = new Stage();
            
@@ -178,11 +185,24 @@ iduser=Us.getId();
       
       
        
-  AnchorPane p= FXMLLoader.load(getClass().getResource("GProduit.fxml"));
-        pane.getChildren().setAll(p);
-        
-        p.setMinHeight(849);
-        p.setMinWidth(561);
+Stage stage = (Stage) login.getScene().getWindow();
+        // do what you have to do
+        stage.close();
+
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginFXML.fxml"));
+            Parent root2 = (Parent) fxmlLoader.load();
+            Stage stage2 = new Stage();
+           
+       
+            stage2.setTitle("Souk El Madina ");
+            stage2.setScene(new Scene(root2));
+
+            stage2.show();
+
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
      
  
  }
@@ -192,22 +212,45 @@ iduser=Us.getId();
   System.out.println(Us.getId());
    
 
-  AnchorPane p= FXMLLoader.load(getClass().getResource("GProduit.fxml"));
-        pane.getChildren().setAll(p);
- p.setMinHeight(849);
-        p.setMinWidth(561);
+ Stage stage = (Stage) login.getScene().getWindow();
+        // do what you have to do
+        stage.close();
+
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginFXML.fxml"));
+            Parent root2 = (Parent) fxmlLoader.load();
+            Stage stage2 = new Stage();
+           
+       
+            stage2.setTitle("Souk El Madina ");
+            stage2.setScene(new Scene(root2));
+
+            stage2.show();
+
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
  }
      else
  {
- System.out.println("Error message = "+userValide);}
+ System.out.println("Error message = "+userValide);
+ 
+   Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Login");
+            alert.setContentText(" Invalid user");
+
+            alert.showAndWait();
+ }
      
  }
  catch (Exception e1)
  {
  e1.printStackTrace();
  }
-}   
+}}  
     
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -215,5 +258,31 @@ iduser=Us.getId();
     
         // TODO
     }    
+    
+      private boolean ControleSaisie() {
+        boolean valide = true;
+
+if(pass.getText().equals("")||Nom.getText().equals(""))        {
+            
+              valide=false;
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Champ obligatoire");
+            alert.setContentText("veuiller remplir tous les champs!");
+
+            alert.showAndWait();
+        }
+        return valide;
+    }
+      @FXML
+    private void CreerCompte(ActionEvent event) throws IOException {
+                                   Stage stage = (Stage) btnCreerCompte.getScene().getWindow();
+             stage.close();
+            Stage window = new Stage();
+            window.centerOnScreen();
+            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("ChoixCompteFXML.fxml")));
+            window.setScene(scene);  
+             window.show();
+    }
 }
 

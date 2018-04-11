@@ -8,23 +8,22 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="230.0" prefWidth="497.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="Gui.CommentController">
+<AnchorPane id="AnchorPane" prefHeight="230.0" prefWidth="497.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.CommentController">
    <children>
       <VBox layoutY="6.0" prefHeight="247.0" prefWidth="497.0">
          <children>
-            <AnchorPane prefHeight="240.0" prefWidth="497.0" style="-fx-background-color: red;">
+            <AnchorPane prefHeight="242.0" prefWidth="497.0" style="-fx-background-color: red;">
                <children>
                   <Label fx:id="username" layoutX="304.0" layoutY="25.0" text="username" visible="false" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="107.0" layoutX="38.0" layoutY="58.0" stroke="BLACK" strokeType="INSIDE" width="361.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="145.0" layoutX="38.0" layoutY="58.0" stroke="BLACK" strokeType="INSIDE" width="445.0" />
                   <Label fx:id="idCom" layoutX="362.0" layoutY="25.0" text="Label" visible="false" />
-                  <Button fx:id="suppbtn" layoutX="356.0" layoutY="185.0" mnemonicParsing="false" onAction="#SuppCom" prefHeight="25.0" prefWidth="86.0" text="Supprimer" />
-                  <Label fx:id="UsName" layoutX="38.0" layoutY="16.0" prefHeight="36.0" prefWidth="93.0" text="Label" textFill="WHITE">
+                  <Button fx:id="suppbtn" layoutX="404.0" layoutY="206.0" mnemonicParsing="false" onAction="#SuppCom" prefHeight="25.0" prefWidth="86.0" text="Supprimer" />
+                  <Label fx:id="UsName" layoutX="38.0" layoutY="16.0" prefHeight="36.0" prefWidth="427.0" text="Label" textFill="WHITE">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="comment" layoutX="49.0" layoutY="62.0" prefHeight="100.0" prefWidth="341.0" />
+                  <TextArea fx:id="comment" layoutX="49.0" layoutY="62.0" prefHeight="137.0" prefWidth="427.0" />
                </children>
             </AnchorPane>
          </children>
