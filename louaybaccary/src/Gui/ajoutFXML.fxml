@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #c51f1f;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.AjoutFXMLController">
+   <children>
+      <Label layoutX="64.0" layoutY="33.0" text="Date Debut" textFill="#f8f8f8" />
+      <Label layoutX="73.0" layoutY="84.0" text="Date Fin" textFill="#f8f8f8" />
+      <Label layoutX="50.0" layoutY="135.0" text="Nom Evenement" textFill="#f8f8f8" />
+      <Label layoutX="56.0" layoutY="188.0" text="Description" textFill="#f8f8f8" />
+      <Label layoutX="58.0" layoutY="245.0" text="Lieux" textFill="#f8f8f8" />
+      <TextField fx:id="nom" layoutX="163.0" layoutY="131.0" />
+      <TextField fx:id="desc" layoutX="163.0" layoutY="184.0" />
+      <TextField fx:id="lieu" layoutX="163.0" layoutY="241.0" />
+      <Label layoutX="52.0" layoutY="290.0" text="Nb Paricicipe" textFill="#f8f8f8" />
+      <TextField fx:id="nbr" layoutX="163.0" layoutY="286.0" />
+      <DatePicker fx:id="debut" layoutX="163.0" layoutY="29.0" />
+      <DatePicker fx:id="s" layoutX="163.0" layoutY="80.0" />
+      <Button fx:id="buttonConfirmer" layoutX="434.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleButtonConfirmer" text="Confirmer" />
+      <Button fx:id="buttonAnnuler" layoutX="434.0" layoutY="143.0" mnemonicParsing="false" onAction="#handleButtonAnnuler" text="Annuler" />
+      <Label layoutX="58.0" layoutY="344.0" text="Nb Max" textFill="#f8f8f8" />
+      <TextField fx:id="max" layoutX="163.0" layoutY="332.0" />
+   </children>
+</AnchorPane>

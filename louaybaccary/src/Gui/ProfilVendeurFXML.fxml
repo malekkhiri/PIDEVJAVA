@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="566.0" prefWidth="1025.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.ProfilVendeurFXMLController">
+   <children>
+      <VBox fx:id="parent" layoutY="6.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="1025.0" style="-fx-background-color: white;" styleClass="main" stylesheets="@../Css/acceuil.css">
+         <children>
+            <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="89.0" prefWidth="1025.0" styleClass="menu_bar" stylesheets="@/Css/acceuil.css">
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" width="10.0" />
+               </effect>
+               <children>
+                  <ImageView fitHeight="111.0" fitWidth="113.0" onMouseClicked="#ClickMenu" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../utils/assets/logo2.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="25.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label fx:id="acceuil" onMouseClicked="#ClickMenu" prefHeight="43.0" prefWidth="120.0" styleClass="menu_item" text="Acceuil" textFill="#db4f61">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="35.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="11.0" left="30.0" top="11.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="services" onMouseClicked="#Magasin" prefHeight="43.0" prefWidth="120.0" styleClass="menu_item" text="Magasin" textFill="#837f7f">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="11.0" left="25.0" top="11.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="produits" onMouseClicked="#Produit" prefHeight="43.0" prefWidth="120.0" styleClass="menu_item" text="Produits" textFill="#837f7f">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="11.0" left="23.0" top="11.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="evenements" onMouseClicked="#Evenement" prefHeight="43.0" prefWidth="120.0" styleClass="menu_item" text="Evenements" textFill="#837f7f">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="11.0" left="8.0" top="11.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="espace" onMouseClicked="#Reclamation" prefHeight="49.0" prefWidth="144.0" styleClass="menu_item" text="Reclamations" textFill="#837f7f">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="11.0" left="8.0" top="11.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="espace1" onMouseClicked="#Reclamation" prefHeight="49.0" prefWidth="144.0" styleClass="menu_item" text="Annonces" textFill="#837f7f">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="11.0" left="8.0" top="11.0" />
+                     </padding>
+                  </Label>
+                  <Label text="1£" textFill="#db4f4f">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <FontAwesomeIconView glyphName="CART_PLUS" glyphStyle="-fx-fill:#db4f4f" onMouseClicked="#Panier" size="2em">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+                  <FontAwesomeIconView glyphName="GEAR" glyphStyle="-fx-fill:#db4f4f" layoutX="944.0" layoutY="44.0" onMouseClicked="#Profil" size="2em">
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="60.0" prefHeight="504.0" prefWidth="1024.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <Label layoutX="290.0" layoutY="191.0" text="Username" AnchorPane.leftAnchor="290.0" />
+      <Label layoutX="290.0" layoutY="239.0" text="Numero de telephone" AnchorPane.leftAnchor="290.0" />
+      <Label layoutX="290.0" layoutY="293.0" text="Ville" AnchorPane.leftAnchor="290.0" />
+      <TextField fx:id="textFieldUsername" layoutX="424.0" layoutY="187.0" />
+      <TextField fx:id="textFieldNumTel" layoutX="424.0" layoutY="236.0" />
+      <ComboBox fx:id="comboVille" layoutX="424.0" layoutY="290.0" prefWidth="150.0" />
+      <ButtonBar layoutX="70.0" layoutY="341.0" prefHeight="39.0" prefWidth="397.0" />
+      <Button fx:id="btnsupprimer" layoutX="254.0" layoutY="425.0" mnemonicParsing="false" onAction="#supprimer" style="-fx-background-color: #ff0000;" text="Supprimer Mon Compte" textFill="#070606" />
+      <Button fx:id="btnvalider" layoutX="448.0" layoutY="425.0" mnemonicParsing="false" onAction="#valider" text="Valider les achats" />
+      <Button fx:id="btnEffacer" layoutX="461.0" layoutY="482.0" mnemonicParsing="false" onAction="#Effacer" prefHeight="32.0" prefWidth="206.0" text="Effacer " />
+      <Button fx:id="btnModifier" layoutX="254.0" layoutY="478.0" mnemonicParsing="false" onAction="#Modifier" text="Enregistrer Modification" />
+      <Button fx:id="btnChangermdp" layoutX="615.0" layoutY="425.0" mnemonicParsing="false" onAction="#Changermdp" text="Changer mot de passe" />
+   </children>
+</AnchorPane>

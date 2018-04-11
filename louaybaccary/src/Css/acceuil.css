@@ -1,0 +1,43 @@
+.parent{
+    -fx-background-color: #323754;
+}
+.header{
+    -fx-background-color: #323754;
+}
+#headerBtns:hover{
+    -fx-opacity: 0.75;
+}
+#headerBtns{
+    -fx-opacity: 1;
+}
+
+
+
+#main-menu-label{
+        -fx-font-size:25;
+        -fx-font-weight:bold;
+        -fx-text-fill: white;
+}
+
+
+.menu_bar{
+    -fx-background-color: white;
+    -fx-background-image:url("/utils/assets/l.png");
+}
+
+.main
+{
+        -fx-background-color: #4169E1;
+        -fx-background-image:url("/utils/assets/menu2.jpg");
+}
+
+.menu_item{
+    -fx-font-weight:bold;
+    -fx-font-size:18;
+}
+
+.menu_item:hover{
+    -fx-font-weight:bold;
+    -fx-text-fill: white;
+    -fx-background-color: #4f86dd;
+}

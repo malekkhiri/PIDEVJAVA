@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="670.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.PieChart2Controller">
+   <children>
+      <Label fx:id="status" layoutX="358.0" layoutY="41.0" text="Nombre de magasin par proprietaire" />
+      <PieChart fx:id="pie" layoutX="10.0" layoutY="58.0" prefHeight="600.0" prefWidth="890.0" />
+   </children>
+</AnchorPane>

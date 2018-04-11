@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="947.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.AcceuilController">
+   <children>
+      <VBox fx:id="parent" minHeight="-Infinity" minWidth="-Infinity" prefHeight="612.0" prefWidth="945.0" style="-fx-background-color: red;" styleClass="main" stylesheets="@../Css/acceuil.css">
+         <children>
+            <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="79.0" prefWidth="945.0" styleClass="menu_bar" stylesheets="@/Css/acceuil.css">
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" width="10.0" />
+               </effect>
+               <children>
+                  <ImageView fitHeight="97.0" fitWidth="217.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../utils/assets/logo2.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="25.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label fx:id="acceuil" prefHeight="43.0" prefWidth="120.0" styleClass="menu_item" text="Acceuil" textFill="#db4f4f">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="35.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="11.0" left="30.0" top="11.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="services" onMouseClicked="#Magasin" prefHeight="43.0" prefWidth="120.0" styleClass="menu_item" text="Magasins" textFill="#837f7f">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="11.0" left="25.0" top="11.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="produits" onMouseClicked="#Produit" prefHeight="43.0" prefWidth="120.0" styleClass="menu_item" text="Produits" textFill="#837f7f">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="11.0" left="23.0" top="11.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="evenements" onMouseClicked="#Evenement" prefHeight="49.0" prefWidth="127.0" styleClass="menu_item" text="Evenements" textFill="#837f7f">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="11.0" left="8.0" top="11.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="espace" onMouseClicked="#Reclamation" prefHeight="49.0" prefWidth="144.0" styleClass="menu_item" text="Reclamations" textFill="#837f7f">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="11.0" left="8.0" top="11.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="espace1" onMouseClicked="#Reclamation" prefHeight="49.0" prefWidth="103.0" styleClass="menu_item" text="Annonces" textFill="#837f7f">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="11.0" left="8.0" top="11.0" />
+                     </padding>
+                  </Label>
+                  <Label text="1£" textFill="#db4f4f">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <FontAwesomeIconView glyphName="CART_PLUS" glyphStyle="-fx-fill:#db4f4f" onMouseClicked="#Panier" size="2em">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+                  <FontAwesomeIconView glyphName="GEAR" glyphStyle="-fx-fill:#db4f4f" layoutX="944.0" layoutY="44.0" size="2em">
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="60.0" prefHeight="504.0" prefWidth="1024.0">
+               <children>
+                  <Pane layoutX="10.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="500.0">
+                     <children>
+                        <Pane layoutY="168.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="336.0" prefWidth="490.0">
+                           <children>
+                              <Pane layoutX="250.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="333.0" prefWidth="240.0">
+                                 <children>
+                                    <Pane id="headerBtns" layoutY="-3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="172.0" prefWidth="240.0">
+                                       <children>
+                                          <ImageView fx:id="vet" fitHeight="148.0" fitWidth="240.0" layoutX="4.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../utils/assets/Untitled-6.jpg" />
+                                             </image>
+                                          </ImageView>
+                                          <Label id="main-menu-label" fx:id="stor1" layoutX="-8.0" layoutY="135.0" prefHeight="40.0" prefWidth="221.0" style="-fx-background-color: red;" text="    Annonces" textFill="WHITE">
+                                             <font>
+                                                <Font name="Roboto Condensed" size="16.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="30.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane id="headerBtns" layoutY="177.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#Reclamation" prefHeight="156.0" prefWidth="240.0">
+                                       <children>
+                                          <ImageView fx:id="pan" fitHeight="172.0" fitWidth="243.0" layoutX="-17.0" onMouseClicked="#Reclamation" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../utils/assets/Untitled-4.jpg" />
+                                             </image>
+                                          </ImageView>
+                                          <Label id="main-menu-label" fx:id="pani" layoutX="-24.0" layoutY="116.0" prefHeight="40.0" prefWidth="251.0" style="-fx-background-color: red;" text="    Reclamations" textFill="WHITE">
+                                             <font>
+                                                <Font name="Roboto Condensed" size="16.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="30.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </Pane>
+                              <Pane id="headerBtns" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="336.0" prefWidth="243.0">
+                                 <children>
+                                    <ImageView fx:id="enc" fitHeight="299.0" fitWidth="243.0" layoutX="6.0" layoutY="6.0" onMouseClicked="#Magasin" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../utils/assets/Untitled-2.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <Label id="main-menu-label" fx:id="ench" layoutX="5.0" layoutY="300.0" prefHeight="40.0" prefWidth="214.0" style="-fx-background-color: red;" text="Magasins" textFill="WHITE">
+                                       <font>
+                                          <Font name="Roboto Condensed" size="16.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="30.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                        <Pane id="headerBtns" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="461.0">
+                           <children>
+                              <ImageView fx:id="sto" fitHeight="123.0" fitWidth="451.0" layoutX="70.0" layoutY="-3.0" onMouseClicked="#Produit" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../utils/assets/Untitled-3.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Label id="main-menu-label" fx:id="stor" layoutX="67.0" layoutY="120.0" prefHeight="40.0" prefWidth="372.0" style="-fx-background-color: red;" text="                 Produit" textFill="WHITE">
+                                 <font>
+                                    <Font name="Roboto Condensed" size="16.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="30.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Pane>
+                  <Pane layoutX="210.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="417.0">
+                     <children>
+                        <Pane id="headerBtns" layoutX="-7.0" layoutY="348.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="156.0" prefWidth="497.0">
+                           <children>
+                              <ImageView fx:id="ser" fitHeight="156.0" fitWidth="428.0" onMouseClicked="#Profil" pickOnBounds="true" smooth="false">
+                                 <image>
+                                    <Image url="@../utils/assets/1200px-Profil.svg.png" />
+                                 </image>
+                              </ImageView>
+                              <Label id="main-menu-label" fx:id="serv" layoutY="116.0" prefHeight="40.0" prefWidth="497.0" textFill="#080cee">
+                                 <font>
+                                    <Font name="Roboto Condensed" size="16.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="30.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane id="headerBtns" layoutX="-7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="428.0">
+                           <children>
+                              <ImageView fx:id="eve" fitHeight="287.0" fitWidth="482.0" layoutX="5.0" onMouseClicked="#Evenement" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../utils/assets/Untitled-5.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Label id="main-menu-label" fx:id="even" layoutX="7.0" layoutY="287.0" prefHeight="50.0" prefWidth="418.0" style="-fx-background-color: red;" stylesheets="@../Css/acceuil.css" text="               Evenements" textFill="WHITE">
+                                 <font>
+                                    <Font name="Roboto Condensed" size="16.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="30.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Pane>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
