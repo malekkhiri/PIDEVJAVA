@@ -20,6 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -27,9 +28,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import service.ServiceUser;
-
-import javafx.scene.control.Alert;
-
 
 
 /**
@@ -51,13 +49,16 @@ private boolean btnclicked;
         @FXML
     private Button login;
         
+    @FXML
+    private Button facebook;
+
+    @FXML
+    private Label noU;
             @FXML
     private AnchorPane pane;
             private String loggeduser;
             private User Us;
             private Stage dialogStage;
-    @FXML
-    private Button btnCreerCompte;
 
     public Stage getDialogStage() {
         return dialogStage;
@@ -100,10 +101,10 @@ private boolean btnclicked;
        
         if(ControleSaisie()){
         String  username=Nom.getText();
-//       String password=pass.getText();
+       String password=pass.getText();
        
 User U =new User();
-//       U.setPassword(password);
+       U.setPassword(password);
        U.setUsername(username);
        
        
@@ -162,7 +163,7 @@ iduser=Us.getId();
         stage.close();
 
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginFXML.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomeAdmin.fxml"));
             Parent root2 = (Parent) fxmlLoader.load();
             Stage stage2 = new Stage();
            
@@ -190,7 +191,7 @@ Stage stage = (Stage) login.getScene().getWindow();
         stage.close();
 
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginFXML.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Acceuil.fxml"));
             Parent root2 = (Parent) fxmlLoader.load();
             Stage stage2 = new Stage();
            
@@ -217,7 +218,7 @@ Stage stage = (Stage) login.getScene().getWindow();
         stage.close();
 
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginFXML.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Acceuil.fxml"));
             Parent root2 = (Parent) fxmlLoader.load();
             Stage stage2 = new Stage();
            
@@ -234,8 +235,7 @@ Stage stage = (Stage) login.getScene().getWindow();
      else
  {
  System.out.println("Error message = "+userValide);
- 
-   Alert alert = new Alert(Alert.AlertType.ERROR);
+    Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText("Login");
             alert.setContentText(" Invalid user");
@@ -262,7 +262,7 @@ Stage stage = (Stage) login.getScene().getWindow();
       private boolean ControleSaisie() {
         boolean valide = true;
 
-if(Nom.getText().equals(""))        {
+if(pass.getText().equals("")||Nom.getText().equals(""))        {
             
               valide=false;
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -273,16 +273,6 @@ if(Nom.getText().equals(""))        {
             alert.showAndWait();
         }
         return valide;
-    }
-      @FXML
-    private void CreerCompte(ActionEvent event) throws IOException {
-                                   Stage stage = (Stage) btnCreerCompte.getScene().getWindow();
-             stage.close();
-            Stage window = new Stage();
-            window.centerOnScreen();
-            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("ChoixCompteFXML.fxml")));
-            window.setScene(scene);  
-             window.show();
     }
 }
 

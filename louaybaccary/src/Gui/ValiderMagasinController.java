@@ -68,12 +68,6 @@ public class ValiderMagasinController implements Initializable {
     private TableColumn<?, ?> NomMagasinC;
     @FXML
     private TableColumn<?, ?> AdresseMC;
-    @FXML
-    private Label Telephone;
-    @FXML
-    private Label TelephoneM;
-    @FXML
-    private Button showStat;
     /**
      * Initializes the controller class.
      */
@@ -106,15 +100,18 @@ TableViewM.setItems(FXCollections.observableArrayList(listMagasin));
           RegionM.setText(String.valueOf(magasin.getRegion()));
 
                VilleM.setText(String.valueOf(magasin.getVille()));
-                              TelephoneM.setText(String.valueOf(magasin.getTelephone()));
-
 
      
      
  
  }
 
+     
+      
+
  
+      
+     
    @FXML
  
      private void handleSuppBtn() throws IOException, SQLException{
@@ -149,113 +146,6 @@ TableViewM.setItems(FXCollections.observableArrayList(listMagasin));
     private void ClickProduit(MouseEvent event) throws IOException {
 
  try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("ValiderP.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }
-    }
-    
-        @FXML
-    private void ClickSMS(ActionEvent event) throws IOException {
-
- try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("sms.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }
-    }
-
-    @FXML
-    private void showStat(ActionEvent event) {
-         Parent root = null;
-                try {
-                    
-                    root = FXMLLoader.load(getClass().getResource("/Gui/PieChart2.fxml"));
-                    Scene s1 = new Scene(root);
-                    Stage primaryStage=new Stage();
-                    primaryStage.setScene(s1);
-                    primaryStage.show();
-                    
-                    Stage actualStage = (Stage) showStat.getScene().getWindow();
-                    actualStage.close();
-                    
-                } catch (IOException ex) {
-                    Logger.getLogger(ValiderMagasinController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-    }
-    
-    
-   
-
-@FXML
-    private void ClickMagasin(MouseEvent event) {
-        
-       try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("ValiderMagasin.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }
-   
-    }
-    
-    @FXML
-    private void ClickEvenement(MouseEvent event) {
-        
-        try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("AdminEvenement.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }
-    
-}
-     @FXML
-    private void Clickhome(MouseEvent event) {
-        
-        try {
               Parent home_page_parent = FXMLLoader.load(getClass().getResource("HomeAdmin.fxml"));
         Scene home_page_scene = new Scene(home_page_parent);
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -271,7 +161,5 @@ TableViewM.setItems(FXCollections.observableArrayList(listMagasin));
            
         
     }
-    
-}
-    
+    }
 }

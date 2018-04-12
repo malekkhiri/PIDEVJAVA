@@ -25,7 +25,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -36,7 +35,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.controlsfx.control.Rating;
-import service.ServiceCommande;
 import service.ServiceCommentaire;
 import service.ServiceProduit;
 import service.ServicePromo;
@@ -68,8 +66,18 @@ public class SingleProductController implements Initializable {
     @FXML
     private VBox paneV;
 
+    @FXML
+    private Label susername;
+
+    @FXML
+    private TextArea comment;
+
+    @FXML
+    private Label username;
   
     private Produit p;
+        @FXML
+    private Label idCom;
         private Promotion promo;
         private double nvP;
         private String n;
@@ -80,18 +88,12 @@ public class SingleProductController implements Initializable {
     private Label rateint;
                    @FXML
     private Button btnR;
-    @FXML
-    private Button btnAdd;
-    @FXML
-    private Button btnSuppimer;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     try {
-             btnAdd.setVisible(false);
-        btnSuppimer.setVisible(false);
        rating.addEventHandler(MouseEvent.MOUSE_CLICKED,(MouseEvent e)->{
                          
              if ((int)(long)Double.parseDouble(rateint.getText())==0) {
@@ -107,8 +109,6 @@ public class SingleProductController implements Initializable {
             // TODO
 
             listeCommentaire();
-            NewFXMain1 main = new NewFXMain1();
-            selecionarItemTableViewClientes(main.p);
         } catch (SQLException ex) {
             Logger.getLogger(SingleProductController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -135,6 +135,7 @@ public class SingleProductController implements Initializable {
 }
     
     
+    @FXML
     public void listeCommentaire() throws SQLException{
         
         
@@ -192,6 +193,8 @@ this.imageP.setImage(i);
         
     }
  
+        @FXML
+
   private boolean CoomAction(Commentaire commentaire) throws IOException{
    FXMLLoader loader =new FXMLLoader();
   loader.setLocation(AjoutCommentController.class.getResource("AjoutComment.fxml"));
@@ -236,6 +239,7 @@ Commentaire commentaire=new Commentaire();
                 }
      } }
      
+     @FXML
      public void Rating (){
          
          rating.ratingProperty().addListener(new ChangeListener<Number>(){
@@ -284,69 +288,7 @@ Commentaire commentaire=new Commentaire();
          
          
      
-     } 
-     
-     
-     
-     public void selecionarItemTableViewClientes(Produit p) throws SQLException
- {
-    // System.out.println(Commande.toString());
-          if (p != null) {
-           ServiceCommande sc = new ServiceCommande();
-           boolean t =sc.findproduit(p);
-           if (t){
-           btnAdd.setVisible(true);
-           btnSuppimer.setVisible(false);
-           }
-           else btnAdd.setVisible(false);
-           btnSuppimer.setVisible(true);
-           
-        } else {
-              System.out.println("test");
-        }
-         
-         
- }
-     @FXML
-    private void supprimer(ActionEvent event) {
-        
-        NewFXMain1 main = new NewFXMain1();
-            if(main.p != null){
-            ServiceCommande Sc=new ServiceCommande();
-            Sc.supprimer(main.p);
-           btnAdd.setVisible(true);
-           
-            btnSuppimer.setVisible(false);
-    }
-    
-
-    }
-     
-     @FXML
-    private void Add(ActionEvent event) throws SQLException  {
-NewFXMain1 main=new NewFXMain1();              //          System.out.println(Produit.toString());
-if (main.p.getQuantite()==0)
-{
-       
-             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("MAFAMESH MENHA A5R KA3BA TESHRET ");
-            alert.show();
-}
-             
-          
-
-        
-    else
-    
-        {
-            ServiceCommande sc = new ServiceCommande ();
-             sc.insertCommande(main.p);
-             btnSuppimer.setVisible(true);
-             btnAdd.setVisible(false);
-    }   
-           
-
-    }
+     }     
      
      
 }

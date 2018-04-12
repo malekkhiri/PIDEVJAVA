@@ -21,9 +21,6 @@ import Entity.User;
 import Gui.NewFXMain1;
 
 import java.io.FileNotFoundException;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.chart.PieChart;
 
 
 /**
@@ -44,8 +41,8 @@ public class GestionMagasin {
     public void AjoutMagasin(Magasin magasin){
 
         String req="INSERT INTO"
-                + " `Magasin`(`nom_magasin`,`adresse_magasin`,`region`,`ville`,`Validated`,`prop_magasin`,`Telephone`) "
-                + "VALUES (?,?,?,?,?,?,?)";
+                + " `Magasin`(`nom_magasin`,`adresse_magasin`,`region`,`ville`,`Validated`,`prop_magasin`) "
+                + "VALUES (?,?,?,?,?,?)";
         
         try {
             PreparedStatement statement= conn.prepareStatement(req);
@@ -56,8 +53,6 @@ public class GestionMagasin {
              statement.setInt(5,magasin.getValidated() );
 
              statement.setInt(6,magasin.getProp_magasin());
-                          statement.setString(7,magasin.getTelephone());
-
             statement.executeUpdate();
                     System.out.println("Magasin crée!!!!");
 
@@ -85,7 +80,7 @@ public class GestionMagasin {
             rs=statement.executeQuery(req);
             while(rs.next()){
                 Magasin m=new Magasin((rs.getInt("id_magasin")),rs.getInt("Prop_magasin"),(rs.getString("Nom_magasin")),(rs.getString("Adresse_magasin"))
-                        ,(rs.getString("Region")),(rs.getString("Ville")),(rs.getInt("Validated")),(rs.getString("Telephone")));
+                        ,(rs.getString("Region")),(rs.getString("Ville")),(rs.getInt("Validated")));
                 NewFXMain1 main=new NewFXMain1();
                 
 
@@ -101,7 +96,7 @@ if(m.getValidated()==1){
     
     public void ModifierMagasin(Magasin magasin){
         List<Magasin> liste=new ArrayList<>();
-        String req="UPDATE `magasin` SET `Nom_magasin`=?,`Adresse_magasin`=?,`Region`=?,`Ville`=?,`Telephone`=? WHERE id_magasin=?";
+        String req="UPDATE `magasin` SET `Nom_magasin`=?,`Adresse_magasin`=?,`Region`=?,`Ville`=? WHERE id_magasin=?";
         try {
             PreparedStatement ste= conn.prepareStatement(req);
              
@@ -109,9 +104,7 @@ if(m.getValidated()==1){
             ste.setString(2, magasin.getAdresse_magasin());
             ste.setString(3, magasin.getRegion());
                ste.setString(4, magasin.getVille());
-                              ste.setString(5, magasin.getTelephone());
-
-               ste.setInt(6,magasin.getId_magasin());
+               ste.setInt(5,magasin.getId_magasin());
            
             
             ste.executeUpdate();
@@ -181,7 +174,7 @@ if(m.getValidated()==1){
             rs=statement.executeQuery(req);
             while(rs.next()){
                 Magasin m=new Magasin((rs.getInt("id_magasin")),rs.getInt("Prop_magasin"),(rs.getString("Nom_magasin")),(rs.getString("Adresse_magasin"))
-                        ,(rs.getString("Region")),(rs.getString("Ville")),(rs.getInt("Validated")),(rs.getString("Telephone")));
+                        ,(rs.getString("Region")),(rs.getString("Ville")),(rs.getInt("Validated")));
 
 if(m.getValidated() == 0){
                 liste.add(m);
@@ -212,7 +205,6 @@ if(m.getValidated() == 0){
                 m.setAdresse_magasin(rs.getString("Adresse_magasin"));
                 m.setRegion(rs.getString("Region"));
                 m.setVille(rs.getString("Ville"));
-                m.setTelephone(rs.getString("Telephone"));
             }   
 
 
@@ -233,7 +225,7 @@ if(m.getValidated() == 0){
             rs=statement.executeQuery(req);
             while(rs.next()){
                  Magasin m=new Magasin((rs.getInt("id_magasin")),rs.getInt("Prop_magasin"),(rs.getString("Nom_magasin")),(rs.getString("Adresse_magasin"))
-                        ,(rs.getString("Region")),(rs.getString("Ville")),(rs.getInt("Validated")),(rs.getString("Telephone")));
+                        ,(rs.getString("Region")),(rs.getString("Ville")),(rs.getInt("Validated")));
                 NewFXMain1 main=new NewFXMain1();
                 
 
@@ -246,62 +238,4 @@ if(m.getValidated()==1){
         }
         return liste;
     }
-    
-    
-    
-     public static List<String> selectM(){
-            List <String> list = new ArrayList<>(); 
-            
-            try {
-            String req ="SELECT Nom_magasin FROM magasin where validated=0";
-            PreparedStatement ste = DataSource.getInstance().getConnection().prepareStatement(req);
-           
-            ResultSet result = ste.executeQuery();   
-            while(result.next()){
-                list.add(
-                result.getString("Nom_magasin"));
-            }
-            
-        } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-        }
-            return list;
-        }
-     public static int numeroaffich(String a) throws SQLException{
-        
-        int b=-1;
-        String req="SELECT Telephone FROM Magasin WHERE Nom_Magasin='"+a+"'";
-        PreparedStatement ste = DataSource.getInstance().getConnection().prepareStatement(req);
-           
-            ResultSet result = ste.executeQuery(); 
-            while(result.next()){
-                b=result.getInt("Telephone");
-            }
-            
-            
-        return b;
-        
-        
-    }
-     
-     public ObservableList<PieChart.Data> StatNbr() {
-        ArrayList<PieChart.Data> list = new ArrayList<PieChart.Data>();
-        try {
-            PreparedStatement st = conn.prepareStatement("select COUNT(prop_magasin),id_magasin from magasin group BY prop_magasin");
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                list.add(new PieChart.Data(rs.getString(2), rs.getInt(1)));
-            }
-            ObservableList<PieChart.Data> observableList;
-            observableList = FXCollections.observableList(list);
-            //System.out.println("ici" + observableList.size());
-            return observableList;
-
-        } catch (SQLException ex) {
-             Logger.getLogger(ServiceEvenement.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-
-     
 }

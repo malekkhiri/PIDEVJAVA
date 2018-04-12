@@ -12,8 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -74,44 +72,6 @@ public class ServicePromo {
         }
         return p;
     }
-     public void updateProduit(Promotion P){
-        List<Promotion> liste=new ArrayList<>();
-        String req="UPDATE `promotion` SET `pourcentage`=?,`date_debut`=?,`date_fin`=? Where id_Produit=?";
-        try {
-            PreparedStatement ste= conn.prepareStatement(req);
-             
-            ste.setFloat(1, P.getPourcentage());
-            ste.setInt(4, P.getId_Produit());
-            ste.setDate(2, P.getDate_Debut());
-            ste.setDate(3, P.getDate_Fin());
-            
-            
-            ste.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(ServiceProduit.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
     
-      
-      public boolean Exist(int idP) throws SQLException {
-       boolean p = false ;
-        
-       
-            String req = "Select *   from `promotion` WHERE id_Produit='"+idP+"'";
-try{
-            statement=conn.createStatement();
-            rs=statement.executeQuery(req);
-            while (rs.next()) {
-                p=true;
-            }
-
-            return p;
-        } catch (SQLException ex) {
-            System.out.println(ex);
-          
-        }return p;
-    
-}
     
 }

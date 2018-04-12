@@ -31,7 +31,7 @@
                         <DropShadow blurType="ONE_PASS_BOX" color="#4ca9c3" height="29.06" radius="9.265" spread="0.07" width="10.0" />
                      </effect>
                      <children>
-                        <ImageView fx:id="imageViewP" fitHeight="86.0" fitWidth="86.0" layoutX="21.0" layoutY="-4.0" onMouseClicked="#Clickhome" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageViewP" fitHeight="86.0" fitWidth="86.0" layoutX="21.0" layoutY="-4.0" onMouseClicked="#ClickProduit" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../utils/assets/logo2.png" />
                            </image>
@@ -74,7 +74,7 @@
                         </TextField>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="95.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#ClickProduit" prefHeight="40.0" prefWidth="332.0" styleClass="btns" stylesheets="@css/HomeAdmin.css">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="95.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="332.0" styleClass="btns" stylesheets="@css/HomeAdmin.css">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
@@ -96,7 +96,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox fx:id="ev" alignment="CENTER_LEFT" layoutX="10.0" layoutY="132.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#ClickEvenement" prefHeight="40.0" prefWidth="332.0" styleClass="btns" stylesheets="@css/HomeAdmin.css">
+                  <HBox fx:id="ev" alignment="CENTER_LEFT" layoutX="10.0" layoutY="132.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="332.0" styleClass="btns" stylesheets="@css/HomeAdmin.css">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
@@ -124,7 +124,7 @@
                      </opaqueInsets>
                      <children>
                         <FontAwesomeIconView glyphName="USERS" glyphStyle="-fx-fill:#7C8184" size="2em" />
-                        <Label text="Gestion Annonces" textFill="#7c8184">
+                        <Label text="Gestion Utilisateurs" textFill="#7c8184">
                            <font>
                               <Font name="Calibri Light" size="20.0" />
                            </font>
@@ -143,7 +143,45 @@
                      </opaqueInsets>
                      <children>
                         <FontAwesomeIconView glyphName="GEAR" glyphStyle="-fx-fill:#7C8184" size="2em" text="" />
-                        <Label onMouseClicked="#ClickMagasin" text="Gestion Magasins" textFill="#7c8184">
+                        <Label text="Gestion Magasins" textFill="#7c8184">
+                           <font>
+                              <Font name="Calibri Light" size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="252.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="332.0" styleClass="btns" stylesheets="@css/HomeAdmin.css">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <children>
+                        <FontAwesomeIconView glyphName="CART_PLUS" glyphStyle="-fx-fill:#7C8184" size="2em" />
+                        <Label text="Gestion Commandes" textFill="#7c8184">
+                           <font>
+                              <Font name="Calibri Light" size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="292.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="332.0" styleClass="btns" stylesheets="@css/HomeAdmin.css">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <children>
+                        <FontAwesomeIconView glyphName="TH" glyphStyle="-fx-fill:#7C8184" size="2em" />
+                        <Label text="Gestion Reclamtion" textFill="#7c8184">
                            <font>
                               <Font name="Calibri Light" size="20.0" />
                            </font>

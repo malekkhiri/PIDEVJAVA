@@ -17,7 +17,6 @@ public class Magasin {
     private String region;
     private String ville;
     private int validated=0;
-    private String Telephone;
 
    
 
@@ -27,38 +26,34 @@ public class Magasin {
     public Magasin(){
     }
     
-    public Magasin(String nom_magasin, String adresse_magasin,String region, String ville,String Telephone){
+    public Magasin(String nom_magasin, String adresse_magasin,String region, String ville){
         this.nom_magasin=nom_magasin;
         this.adresse_magasin=adresse_magasin;
         this.region=region;
         this.ville=ville;
-        this.Telephone=Telephone;
     }
     
     
-        public Magasin(String nom_magasin, String adresse_magasin,String region, String ville,int validated,String Telephone) {
+        public Magasin(String nom_magasin, String adresse_magasin,String region, String ville,int validated) {
         this.nom_magasin=nom_magasin;
         this.adresse_magasin=adresse_magasin;
         this.region=region;
         this.ville=ville;
         this.validated=validated;
-        this.Telephone=Telephone;
         
     }
 
-    public Magasin(String nom_magasin, String adresse_magasin,String region, String ville, int prop_magasin,int validated,String Telephone) {
+    public Magasin(String nom_magasin, String adresse_magasin,String region, String ville, int prop_magasin,int validated) {
         this.nom_magasin=nom_magasin;
         this.adresse_magasin=adresse_magasin;
         this.region=region;
         this.ville=ville;
         this.prop_magasin=prop_magasin;
         this.validated=validated;
-                this.Telephone=Telephone;
-
       
     }
 
-    public Magasin(int id_magasin, int prop_magasin, String nom_magasin, String adresse_magasin, String region, String ville,int validated,String Telephone) {
+    public Magasin(int id_magasin, int prop_magasin, String nom_magasin, String adresse_magasin, String region, String ville,int validated) {
         this.id_magasin = id_magasin;
         this.prop_magasin = prop_magasin;
         this.nom_magasin = nom_magasin;
@@ -66,12 +61,7 @@ public class Magasin {
         this.region = region;
         this.ville = ville;
         this.validated=validated;
-        this.Telephone=Telephone;
-
     }
-    
-    
-     
 
     
     
@@ -178,14 +168,6 @@ public class Magasin {
      */
     public void setValidated(int validated) {
         this.validated = validated;
-    }
-
-    public String getTelephone() {
-        return Telephone;
-    }
-
-    public void setTelephone(String Telephone) {
-        this.Telephone = Telephone;
     }
     
 }

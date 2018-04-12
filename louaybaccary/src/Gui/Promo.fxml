@@ -1,29 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="310.0" prefWidth="403.0" style="-fx-background-color: bb1414;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.PromoController">
+<AnchorPane id="AnchorPane" prefHeight="310.0" prefWidth="403.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.PromoController">
    <children>
-      <Label layoutX="72.0" layoutY="71.0" text="Date Debut" textFill="#fcfcfc">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font></Label>
-      <Label layoutX="72.0" layoutY="126.0" text="Date Fin" textFill="#fcfcfc">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font></Label>
+      <Label layoutX="72.0" layoutY="71.0" text="Date Debut" />
+      <Label layoutX="72.0" layoutY="126.0" text="Date Fin" />
       <DatePicker fx:id="debut" layoutX="168.0" layoutY="67.0" />
       <DatePicker fx:id="s" layoutX="168.0" layoutY="124.0" />
       <Button fx:id="buttonConfirmer" layoutX="195.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleButtonConfirmer" text="Confirmer" />
-      <Label layoutX="68.0" layoutY="188.0" prefHeight="17.0" prefWidth="76.0" text="Pourentage" textFill="#fcfcfc">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font></Label>
-      <ComboBox fx:id="choicebox" layoutX="168.0" layoutY="184.0" prefWidth="150.0" />
+      <Label layoutX="68.0" layoutY="188.0" prefHeight="17.0" prefWidth="76.0" text="Pourentage" />
+      <ChoiceBox fx:id="choicebox" layoutX="168.0" layoutY="184.0" prefHeight="25.0" prefWidth="174.0" />
    </children>
 </AnchorPane>

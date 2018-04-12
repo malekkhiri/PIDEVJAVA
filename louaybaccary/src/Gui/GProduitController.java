@@ -39,7 +39,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import service.ServiceCommentaire;
 import service.ServiceProduit;
-import service.ServicePromo;
 
 /**
  * FXML Controller class
@@ -72,6 +71,8 @@ public class GProduitController implements Initializable {
     @FXML
     private Label LPDes;
 
+    @FXML
+    private Button ajout;
 
     @FXML
     private Button modif;
@@ -118,18 +119,10 @@ public class GProduitController implements Initializable {
     private Label NomMagasin;
     @FXML
     private Button ajoutPromo;
-    @FXML
-    private Label espace1;
-    @FXML
-    private Button modifpro;
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-       
-        
-        
         ListeProduit();
         TableViewP.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue) ->{
             try {
@@ -152,7 +145,6 @@ public class GProduitController implements Initializable {
         ServiceProduit Sp=new ServiceProduit();
         NewFXMain1 main = new NewFXMain1();
         listProduit=Sp.selectProduitUse(main.u.getId());
-        
       
         
         observablelistproduit=FXCollections.observableArrayList(listProduit);
@@ -168,17 +160,6 @@ public class GProduitController implements Initializable {
      lidp.setText(String.valueOf(produit.getId_Produit()));
      ServiceProduit sc =new ServiceProduit();
      NomMagasin.setText(String.valueOf(sc.recupMagasinNom(produit.getId_Magasin())));
-     ServicePromo sp= new ServicePromo();
-          if(sp.Exist(produit.getId_Produit())==false){
-             
-              modifpro.setVisible(false);
-              ajoutPromo.setVisible(true);
-              
-          }
-          else{
-              modifpro.setVisible(true);
-              ajoutPromo.setVisible(false);
-          }
      
  File file = new File("C:/wamp64/www/Final/PIDEV/web/bundles/uploads/brochures/"+produit.getBrochure());
 
@@ -208,6 +189,7 @@ this.imagePV.setImage(i);
  return controller.isBtnClicked();
 
  }
+  @FXML
  private void handleAjoutBtn() throws IOException{
 Produit produit=new Produit();
      boolean btnClicked=ajoutAction(produit);
@@ -235,14 +217,13 @@ ListeProduit();
 
  }
   @FXML
- private void handleAjoutPromoBtn() throws IOException, SQLException{
+ private void handleAjoutPromoBtn() throws IOException{
       Produit produit=TableViewP.getSelectionModel().getSelectedItem();
 NewFXMain1 main = new NewFXMain1();
 main.p=produit;
 Promotion promotion=new Promotion();
      boolean btnClicked=ajoutPromoAction(promotion);
      if(btnClicked){
-          
    
 ListeProduit(); 
      } }
@@ -407,198 +388,34 @@ ListeProduit();
 //     }
        
        
-           
-    
-       
-    @FXML
-    private void Produit (MouseEvent event) throws IOException
-    {
-        
-        
-       try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }
-    }
-    
-    @FXML
-    private void Magasin (MouseEvent event) throws IOException
-    {
-        
-        
-       try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("MagasinFront.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }}
-    
-    
-    @FXML
-    private void Evenement (MouseEvent event) throws IOException
-    {
-        
-        
-      
-           NewFXMain1 main= new NewFXMain1();
-           try{
-           if(main.u.getRoles().equals("a:1:{i:0;s:12:\"ROLE_VENDEUR\";}")){
-                
-                Parent home_page_parent = FXMLLoader.load(getClass().getResource("Vendeur.fxml"));
-                 Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-      
-           }
-              
-     
-           else if (main.u.getRoles().equals("a:1:{i:0;s:16:\"ROLE_UTILISATEUR\";}")){
-              
-                             Parent home_page_parent = FXMLLoader.load(getClass().getResource("GestionEvenementnterfaceController.fxml"));
-  Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-           }                  
-           else{
-               System.out.println("erreur");
-           }
-             
-       
-    
-    } catch (IOException ex) {
-           
-               }    
-    }
-    
-    
-    
-    @FXML
-    private void Panier (MouseEvent event) throws IOException
-    {
-        
-        
-       try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("PanierFXML.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }
-}
-
-
-@FXML
-    private void Profil (MouseEvent event) throws IOException
-    {
-        
-        
-      
-           NewFXMain1 main= new NewFXMain1();
-           try{
-           if(main.u.getRoles().equals("a:1:{i:0;s:12:\"ROLE_VENDEUR\";}")){
-                
-                Parent home_page_parent = FXMLLoader.load(getClass().getResource("ProfilVendeurFXML.fxml"));
-                 Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-      
-           }
-              
-     
-           else if (main.u.getRoles().equals("a:1:{i:0;s:16:\"ROLE_UTILISATEUR\";}")){
-              
-                             Parent home_page_parent = FXMLLoader.load(getClass().getResource("PofilClientFXML.fxml"));
-  Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-           }                  
-           else{
-               System.out.println("erreur");
-           }
-             
-       
-    
-    } catch (IOException ex) {
-           
-               }    
-    }
-    
-
-  @FXML
-    private void Reclamation (MouseEvent event) throws IOException
-    {
-        
-        
-       try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("ReclamationRS.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }
-}
-    
-          @FXML
+            @FXML
     private void ClickMenu(MouseEvent event) throws IOException {
 
  try {
               Parent home_page_parent = FXMLLoader.load(getClass().getResource("Acceuil.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          
+            
+                //app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();  
+            
+        
+            
+        } catch (IOException ex) {
+           
+        
+    }
+    }
+    
+    
+           
+            @FXML
+    private void ClickProduit(MouseEvent event) throws IOException {
+
+ try {
+              Parent home_page_parent = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         Scene home_page_scene = new Scene(home_page_parent);
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
           

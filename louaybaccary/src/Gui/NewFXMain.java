@@ -5,9 +5,6 @@
  */
 package Gui;
 
-import Entity.Magasin;
-import Entity.Produit;
-import Entity.User;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -23,40 +20,11 @@ import javafx.stage.Stage;
  *
  * @author HP
  */
-
-
 public class NewFXMain extends Application {
-     public static User u=null;
-    public static Produit p=null;
-    public static Magasin m=null;
-
-    public static Magasin getM() {
-        return m;
-    }
-
-    public static void setM(Magasin m) {
-        NewFXMain1.m = m;
-    }
-
-    public static Produit getP() {
-        return p;
-    }
-
-    public static void setP(Produit p) {
-        NewFXMain1.p = p;
-    }
-
-    public static User getU() {
-        return u;
-    }
-
-    public static void setU(User u) {
-        NewFXMain1.u = u;
-    }
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("LoginFXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("AjoutDocument.fxml"));
 //        Button btn = new Button();
 //        btn.setText("Say 'Hello World'");
 //        btn.setOnAction(new EventHandler<ActionEvent>() {

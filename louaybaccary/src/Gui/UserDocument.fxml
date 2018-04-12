@@ -15,7 +15,7 @@
    <children>
       <AnchorPane layoutX="615.0" layoutY="115.0" prefHeight="446.0" prefWidth="353.0" style="-fx-background-color: #9c2b27;">
          <children>
-            <JFXTextField fx:id="Nom" focusColor="#207f18" layoutX="50.0" layoutY="160.0" prefHeight="33.0" prefWidth="236.0" promptText="Username" unFocusColor="#d0bfbf">
+            <JFXTextField fx:id="Nom" focusColor="#207f18" layoutX="50.0" layoutY="81.0" prefHeight="33.0" prefWidth="236.0" promptText="Username" unFocusColor="#d0bfbf">
                <effect>
                   <Lighting>
                      <bumpInput>
@@ -27,7 +27,7 @@
                   </Lighting>
                </effect>
             </JFXTextField>
-            <JFXPasswordField fx:id="pass" focusColor="#207f18" layoutX="49.0" layoutY="167.0" prefHeight="25.0" prefWidth="236.0" promptText="Password" unFocusColor="#d0bfbf" visible="false">
+            <JFXPasswordField fx:id="pass" focusColor="#207f18" layoutX="49.0" layoutY="167.0" prefHeight="25.0" prefWidth="236.0" promptText="Password" unFocusColor="#d0bfbf">
                <effect>
                   <Lighting>
                      <bumpInput>
@@ -40,7 +40,7 @@
                </effect>
             </JFXPasswordField>
             <Button fx:id="login" layoutX="25.0" layoutY="254.0" mnemonicParsing="false" onAction="#LoginAction" prefHeight="25.0" prefWidth="291.0" style="-fx-background-color: #e45652; -fx-cursor: hand;" text="Connecter" textFill="#fffefe" />
-            <Label layoutX="99.0" layoutY="64.0" prefHeight="49.0" prefWidth="125.0" text="S'identifier" textFill="#fffbfb">
+            <Label layoutX="135.0" layoutY="32.0" prefHeight="49.0" prefWidth="125.0" text="S'identifier" textFill="#fffbfb">
                <font>
                   <Font size="18.0" />
                </font>
@@ -67,6 +67,6 @@
             <Font name="Bookman Old Style" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="btnCreerCompte" layoutX="107.0" layoutY="446.0" mnemonicParsing="false" onAction="#CreerCompte" prefHeight="25.0" prefWidth="291.0" style="-fx-background-color: #e45652; -fx-cursor: hand;" text="Créer Un Compte" textFill="#fffefe" />
+      <Button layoutX="107.0" layoutY="446.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="291.0" style="-fx-background-color: #e45652; -fx-cursor: hand;" text="Créer Un Compte" textFill="#fffefe" />
    </children>
 </AnchorPane>

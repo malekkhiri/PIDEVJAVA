@@ -7,22 +7,16 @@ package Gui;
 
 import Entity.Magasin;
 import Entity.User;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import service.GestionMagasin;
 
@@ -58,10 +52,6 @@ public class GestionMagasinManipulationController implements Initializable {
     private boolean buttonConfirmerClicked = false;
     private Magasin magasin;
     private User user;
-    @FXML
-    private Label labelMagasinTelephone;
-    @FXML
-    private TextField textFieldMagasinTelephone;
 
     public User getUser() {
         return user;
@@ -152,68 +142,60 @@ public class GestionMagasinManipulationController implements Initializable {
         this.textFieldMagasinAdresse.setText(magasin.getAdresse_magasin());
         this.textFieldMagasinRegion.setText(magasin.getRegion());
         this.textFieldMagasinVille.setText(magasin.getVille());
-        this.textFieldMagasinTelephone.setText(magasin.getTelephone());
-
 
     }
     
-  
+   /* 
+    @FXML
+    public void handleButtonConfirmer() {
+
+        if (ControleDeSaisie()) {
+
+            NewFXMain1 main=new NewFXMain1();
+            user=main.getU();
+        magasin.setNom_magasin(textFieldMagasinNom.getText());
+                   magasin.setAdresse_magasin(textFieldMagasinAdresse.getText());
+          magasin.setRegion(textFieldMagasinRegion.getText());
+         magasin.setVille(textFieldMagasinVille.getText());
+//Magasin magasin = new Magasin(textFieldMagasinNom.getText(),textFieldMagasinAdresse.getText() , textFieldMagasinRegion.getText(),textFieldMagasinVille.getText(), user.getId(), 0);
+ //service.GestionMagasin gm=new service.GestionMagasin();
+// gm.AjouterMagasin(magasin);
+        
+            
+
+            buttonConfirmerClicked = true;
+            dialogStage.close();
+    }}
+    */
     @FXML
     public void handleButtonConfirmer(ActionEvent event) throws SQLException {
     NewFXMain1 main=new NewFXMain1();
     
   
      user=main.getU();
-             if (ControleDeSaisie()) {
-
 magasin.setNom_magasin(textFieldMagasinNom.getText());
 magasin.setAdresse_magasin(textFieldMagasinAdresse.getText());
 magasin.setRegion(textFieldMagasinRegion.getText());
 magasin.setVille(textFieldMagasinVille.getText());
- magasin.setTelephone(textFieldMagasinTelephone.getText());
- 
-   try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("Message.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
- 
-        } catch (IOException ex) {
-           
-        
-    }
 
-             }
 
         
         GestionMagasin gm=new GestionMagasin();
-       
         if(gm.findById(magasin.getId_magasin()) == 0){
-            Magasin magasin = new Magasin(textFieldMagasinNom.getText(),textFieldMagasinAdresse.getText(), textFieldMagasinRegion.getText(),textFieldMagasinVille.getText(), user.getId(), 0,textFieldMagasinTelephone.getText());
+            Magasin magasin = new Magasin(textFieldMagasinNom.getText(),textFieldMagasinAdresse.getText() , textFieldMagasinRegion.getText(),textFieldMagasinVille.getText(), user.getId(), 0);
 
             gm.AjoutMagasin(magasin);
-           
-       
-
-
-        }
-        
-        
-        
-        
+            System.out.println("Gui.GestionMagasinManipulationController.handleButtonConfirmer()");
+                    System.out.println("Gui.MessageMagasin.handleButtonConfirmer()");}
 
 
         else
         {
             System.out.println("c bon  ");
             gm.ModifierMagasin(magasin);
-            dialogStage.close();
         }
-        
             buttonConfirmerClicked = true;
-           
+            dialogStage.close();
     }
     
     @FXML
@@ -235,9 +217,6 @@ magasin.setVille(textFieldMagasinVille.getText());
         if (textFieldMagasinVille.getText() == null || textFieldMagasinVille.getText().length() == 0) {
             errorMessage += "Ville invalide!\n";
         }
-        if (textFieldMagasinTelephone.getText() == null || textFieldMagasinTelephone.getText().length()<8) {
-            errorMessage += "Numéro invalide!\n";
-        }
         if (errorMessage.length() == 0) {
             return true;
         } else {
@@ -251,7 +230,6 @@ magasin.setVille(textFieldMagasinVille.getText());
         }
     }
 
- 
-    }
-    
 
+    
+}

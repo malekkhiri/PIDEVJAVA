@@ -34,8 +34,6 @@ public class GestionMagasinModifController implements Initializable {
     private Label labelMagasinRegion;
     @FXML
     private Label labelMagasinVille;
-     @FXML
-    private Label labelMagasinTelephone;
     @FXML
     private TextField textFieldMagasinNom;
     @FXML
@@ -44,8 +42,6 @@ public class GestionMagasinModifController implements Initializable {
     private TextField textFieldMagasinRegion;
     @FXML
     private TextField textFieldMagasinVille;
-     @FXML
-    private TextField textFieldMagasinTelephone;
     @FXML
     private Button buttonConfirmer;
     @FXML
@@ -145,8 +141,6 @@ public class GestionMagasinModifController implements Initializable {
         this.textFieldMagasinAdresse.setText(magasin.getAdresse_magasin());
         this.textFieldMagasinRegion.setText(magasin.getRegion());
         this.textFieldMagasinVille.setText(magasin.getVille());
-                this.textFieldMagasinTelephone.setText(magasin.getTelephone());
-
 
     }
     
@@ -160,8 +154,6 @@ public class GestionMagasinModifController implements Initializable {
            magasin.setAdresse_magasin(textFieldMagasinAdresse.getText());
            magasin.setRegion(textFieldMagasinRegion.getText());
            magasin.setVille(textFieldMagasinVille.getText());
-                      magasin.setTelephone(textFieldMagasinTelephone.getText());
-
            GestionMagasin gm=new GestionMagasin();
            gm.ModifierMagasin(magasin);
             
@@ -192,6 +184,7 @@ public class GestionMagasinModifController implements Initializable {
         if (errorMessage.length() == 0) {
             return true;
         } else {
+            // Mostrando a mensagem de erro
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText("Remplir toutes les champs");

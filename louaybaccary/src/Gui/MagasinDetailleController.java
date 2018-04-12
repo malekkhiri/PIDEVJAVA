@@ -11,7 +11,6 @@ import Entity.notes;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -28,7 +27,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.controlsfx.control.Rating;
-import service.ServiceProduit;
 import service.ServiceRating;
 import service.ServicesNotes;
 
@@ -168,29 +166,7 @@ Produit produit=new Produit();
      boolean btnClicked=ajoutAction(produit);
      if(btnClicked){
    
-     }}
+     } }
  
-  @FXML
-    private void Click(ActionEvent event) throws IOException {
-
- try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("FXMLDocument1.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }
-    }
-
-
     
 }

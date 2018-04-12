@@ -30,7 +30,7 @@ public class ServiceUser {
        String username = user.getUsername();
  String password = user.getPassword(); 
  String roles=user.getRoles();
- String emailDB=user.getEmail();
+ 
  
     
  String userNameDB = "";
@@ -38,7 +38,7 @@ public class ServiceUser {
  String roleDB = "";
 
 
- String req= ("SELECT `username`, `password`,`email`, `roles` FROM `user`");
+ String req= ("SELECT `username`, `password`, `roles` FROM `user`");
    try
  { 
  statement=conn.createStatement();
@@ -49,12 +49,11 @@ public class ServiceUser {
  userNameDB = rs.getString("username");
  passwordDB = rs.getString("password");
  roleDB = rs.getString("roles");
- emailDB=rs.getString("email");
- if(username.equals(userNameDB)  && roleDB.equals("a:2:{i:0;s:16:\"ROLE_UTILISATEUR\";i:1;s:10:\"ROLE_ADMIN\";}"))
+ if(username.equals(userNameDB) && password.equals(passwordDB) && roleDB.equals("a:2:{i:0;s:16:\"ROLE_UTILISATEUR\";i:1;s:10:\"ROLE_ADMIN\";}"))
  return "Admin";
- else if(username.equals(userNameDB) && roleDB.equals("a:1:{i:0;s:16:\"ROLE_UTILISATEUR\";}"))
+ else if(username.equals(userNameDB) && password.equals(passwordDB) && roleDB.equals("a:1:{i:0;s:16:\"ROLE_UTILISATEUR\";}"))
  return "Utilisateur";
- else if(username.equals(userNameDB)  && roleDB.equals("a:1:{i:0;s:12:\"ROLE_VENDEUR\";}"))
+ else if(username.equals(userNameDB) && password.equals(passwordDB) && roleDB.equals("a:1:{i:0;s:12:\"ROLE_VENDEUR\";}"))
  return "Vendeur";
  }
  }
@@ -78,7 +77,6 @@ public class ServiceUser {
              us.setId(rs.getInt("id"));
              us.setUsername(rs.getString("username"));
              us.setRoles(rs.getString("roles"));
-             us.setEmail(rs.getString("email"));
           
              
       

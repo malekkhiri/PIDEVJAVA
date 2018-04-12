@@ -49,18 +49,134 @@ public class HomeAdminController implements Initializable {
         // TODO
     }    
 
-   
+    @FXML
+    private void ClickStore(MouseEvent event) {
+        
+       try {
+              Parent home_page_parent = FXMLLoader.load(getClass().getResource("/gui/StoreAdmin.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          
+            
+                //app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();  
+            
+        
+            
+        } catch (IOException ex) {
+           
+        
+    }
+    }
 
 
-   
+    @FXML
+    private void ClickEvenement(MouseEvent event) {
+        
+        try {
+              Parent home_page_parent = FXMLLoader.load(getClass().getResource("/gui/EvenementAdmin.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          
+            
+                //app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();  
+            
+        
+            
+        } catch (IOException ex) {
+           
+        
+    }
+    }
 
-   
+    @FXML
+    private void ClickEncheres(MouseEvent event) {
+        try {
+              Parent home_page_parent = FXMLLoader.load(getClass().getResource("/gui/EnchereAdmin.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          
+            
+                //app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();  
+            
+        
+            
+        } catch (IOException ex) {
+           
+        
+    }
+    }
+
+    @FXML
+    private void ClickServices(MouseEvent event) {
+        try {
+              Parent home_page_parent = FXMLLoader.load(getClass().getResource("/gui/ServiceAdmin.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          
+            
+                //app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();  
+            
+        
+            
+        } catch (IOException ex) {
+           
+        
+    }
+    }
+
+    @FXML
+    private void ClickVeterinaire(MouseEvent event) {
+        try {
+              Parent home_page_parent = FXMLLoader.load(getClass().getResource("/gui/VeterinaireAdmin.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          
+            
+                //app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();  
+            
+        
+            
+        } catch (IOException ex) {
+           
+        
+    }
+    }
 
     @FXML
     private void ClickProduit(MouseEvent event) throws IOException {
 
  try {
               Parent home_page_parent = FXMLLoader.load(getClass().getResource("validerP.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          
+            
+                //app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();  
+            
+        
+            
+        } catch (IOException ex) {
+           
+        
+    }
+    }
+     @FXML
+    private void AcceptAnnonce(MouseEvent event) throws IOException {
+
+ try {
+              Parent home_page_parent = FXMLLoader.load(getClass().getResource("ValiderAnnonce.fxml"));
         Scene home_page_scene = new Scene(home_page_parent);
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
           
@@ -98,25 +214,4 @@ public class HomeAdminController implements Initializable {
    
     }
     
-    @FXML
-    private void ClickEvenement(MouseEvent event) {
-        
-        try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("AdminEvenement.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }
-    
-}
 }

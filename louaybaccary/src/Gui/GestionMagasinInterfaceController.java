@@ -36,8 +36,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import service.ServiceCommentaire;
-import service.ServiceProduit;
 
 /**
  * FXML Controller class
@@ -81,10 +79,6 @@ public class GestionMagasinInterfaceController implements Initializable {
     private TextField searchbox;
     @FXML
 private TableColumn<Magasin, Integer> tableColumnId;
-    @FXML
-    private TableColumn<?, ?> tableColumnTelephone;
-    @FXML
-    private Label labelMagasinTelephone;
     
     
 
@@ -97,36 +91,37 @@ private TableColumn<Magasin, Integer> tableColumnId;
         // TODO
         AfficherTableViewMagasin() ;
         tableViewMagasin.getSelectionModel().selectedItemProperty().addListener(
-        (observable, oldValue, newValue) -> selectionnerItemTableViewMagasin(newValue));
-}    
+                (observable, oldValue, newValue) -> selectionnerItemTableViewMagasin(newValue));
+
+        
+    }    
     
      public void AfficherTableViewMagasin() {
         tableColumnNom.setCellValueFactory(new PropertyValueFactory<>("Nom_magasin"));
         tableColumnAdresse.setCellValueFactory(new PropertyValueFactory<>("Adresse_magasin"));
-        tableColumnRegion.setCellValueFactory(new PropertyValueFactory<>("Region"));
+                tableColumnRegion.setCellValueFactory(new PropertyValueFactory<>("Region"));
         tableColumnVille.setCellValueFactory(new PropertyValueFactory<>("Ville"));
-        tableColumnTelephone.setCellValueFactory(new PropertyValueFactory<>("Telephone"));
         tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id_magasin"));
         NewFXMain1 main=new NewFXMain1();
         listMagasin = gm.AfficherMagasinUse(main.u.getId());
+
         observableListMagasin = FXCollections.observableArrayList(listMagasin);
         tableViewMagasin.setItems(observableListMagasin);
     }
-     
+     //page hedhika heya hedhi !! oui oui 
       public void selectionnerItemTableViewMagasin(Magasin magasin){
         if (magasin != null) {
             labelMagasinNom.setText(String.valueOf(magasin.getNom_magasin()));
             labelMagasinAdresse.setText(magasin.getAdresse_magasin());
-            labelMagasinRegion.setText(magasin.getRegion());
+                        labelMagasinRegion.setText(magasin.getRegion());
             labelMagasinVille.setText(magasin.getVille());
-            labelMagasinTelephone.setText(magasin.getTelephone());
+
             
         } else {
             labelMagasinNom.setText("");
             labelMagasinAdresse.setText("");
             labelMagasinRegion.setText("");
             labelMagasinVille.setText("");
-            labelMagasinTelephone.setText("");
         }
         }
       
@@ -137,9 +132,8 @@ private TableColumn<Magasin, Integer> tableColumnId;
         boolean buttonConfirmerClicked = showGestionMagasinManipulation(magasin);
         if (buttonConfirmerClicked) {
             AfficherTableViewMagasin();
-        }}
-             
-    
+        }
+    }
 
     @FXML
     public void handleButtonModifier() throws IOException {
@@ -159,17 +153,37 @@ private TableColumn<Magasin, Integer> tableColumnId;
             alert.show();
         }
     }
-  
+    
+   /* @FXML
+      public void handleButtonModifier() throws IOException, SQLException {
+
+        Magasin magasin = tableViewMagasin.getSelectionModel().getSelectedItem();
+        if (tableViewMagasin.getSelectionModel().getSelectedItem()!=null) {
+            boolean buttonConfirmerClicked = showGestionMagasinManipulation(magasin);
+            if (buttonConfirmerClicked) {
+              
+gm.ModifierMagasin(magasin);      
+carregarTableViewMagasin();
+            }
+        } else {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setContentText("Selectionner un evenement");
+            alert.show();
+
+        }
+        
+        
+    }*/
+    
+    
+    
+    
+
     @FXML
     public void handleButtonSupprimer() throws IOException {
         Magasin magasin = tableViewMagasin.getSelectionModel().getSelectedItem();
-        service.ServiceCommentaire sc=new ServiceCommentaire();
         if (magasin != null) {
             gm.SupprimerMagasin(magasin);
-          
-                    
-            
-            
             AfficherTableViewMagasin();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -181,13 +195,19 @@ private TableColumn<Magasin, Integer> tableColumnId;
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(GestionMagasinInterfaceController.class.getResource("GestionMagasinManipulation.fxml"));
         AnchorPane page = (AnchorPane) loader.load();
+
+        // Criando um Estágio de Diálogo (Stage Dialog)
         Stage dialogStage = new Stage();
         dialogStage.setTitle("Gestion Magasin");
         Scene scene = new Scene(page);
         dialogStage.setScene(scene);
+
+        // Setando o cliente no Controller.
         GestionMagasinManipulationController controller = loader.getController();
         controller.setDialogStage(dialogStage);
         controller.setMagasin(magasin);
+
+        // Mostra o Dialog e espera até que o usuário o feche
         dialogStage.showAndWait();
 
         return controller.isButtonConfirmerClicked();
@@ -239,11 +259,6 @@ private TableColumn<Magasin, Integer> tableColumnId;
                    return true;
                    
               }
-                  
-                  if (t.getTelephone().toString().indexOf(typedText)!=-1) {
-                   return true;
-                   
-              }
                    
               return false;
             }
@@ -254,192 +269,8 @@ private TableColumn<Magasin, Integer> tableColumnId;
         });
                 }
     
-          
-    @FXML
-    private void Produit (MouseEvent event) throws IOException
-    {
-        
-        
-       try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }
-    }
     
     @FXML
-    private void Magasin (MouseEvent event) throws IOException
-    {
-        
-        
-       try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("MagasinFront.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }}
-    
-    
-    @FXML
-    private void Evenement (MouseEvent event) throws IOException
-    {
-        
-        
-      
-           NewFXMain1 main= new NewFXMain1();
-           try{
-           if(main.u.getRoles().equals("a:1:{i:0;s:12:\"ROLE_VENDEUR\";}")){
-                
-                Parent home_page_parent = FXMLLoader.load(getClass().getResource("Vendeur.fxml"));
-                 Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-      
-           }
-              
-     
-           else if (main.u.getRoles().equals("a:1:{i:0;s:16:\"ROLE_UTILISATEUR\";}")){
-              
-                             Parent home_page_parent = FXMLLoader.load(getClass().getResource("GestionEvenementnterfaceController.fxml"));
-  Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-           }                  
-           else{
-               System.out.println("erreur");
-           }
-             
-       
-    
-    } catch (IOException ex) {
-           
-               }    
-    }
-    
-    
-    
-    @FXML
-    private void Panier (MouseEvent event) throws IOException
-    {
-        
-        
-       try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("PanierFXML.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }
-}
-
-
-@FXML
-    private void Profil (MouseEvent event) throws IOException
-    {
-        
-        
-      
-           NewFXMain1 main= new NewFXMain1();
-           try{
-           if(main.u.getRoles().equals("a:1:{i:0;s:12:\"ROLE_VENDEUR\";}")){
-                
-                Parent home_page_parent = FXMLLoader.load(getClass().getResource("ProfilVendeurFXML.fxml"));
-                 Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-      
-           }
-              
-     
-           else if (main.u.getRoles().equals("a:1:{i:0;s:16:\"ROLE_UTILISATEUR\";}")){
-              
-                             Parent home_page_parent = FXMLLoader.load(getClass().getResource("PofilClientFXML.fxml"));
-  Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-           }                  
-           else{
-               System.out.println("erreur");
-           }
-             
-       
-    
-    } catch (IOException ex) {
-           
-               }    
-    }
-    
-
-  @FXML
-    private void Reclamation (MouseEvent event) throws IOException
-    {
-        
-        
-       try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("ReclamationRS.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }
-}
-    
-          @FXML
     private void ClickMenu(MouseEvent event) throws IOException {
 
  try {
@@ -458,6 +289,27 @@ private TableColumn<Magasin, Integer> tableColumnId;
            
         
     }
-    }
  
+}
+    
+    @FXML
+    private void ClickProduit(MouseEvent event) throws IOException {
+
+ try {
+              Parent home_page_parent = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Scene home_page_scene = new Scene(home_page_parent);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          
+            
+                //app_stage.hide(); //optional
+                app_stage.setScene(home_page_scene);
+                app_stage.show();  
+            
+        
+            
+        } catch (IOException ex) {
+           
+        
+    }
+}
 }

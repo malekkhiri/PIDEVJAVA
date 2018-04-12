@@ -31,7 +31,7 @@
                         <DropShadow height="10.0" radius="4.5" width="10.0" />
                      </effect>
                      <children>
-                        <ImageView fitHeight="111.0" fitWidth="113.0" onMouseClicked="#ClickMenu" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="111.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../utils/assets/logo2.png" />
                            </image>
@@ -50,7 +50,7 @@
                               <Insets bottom="11.0" left="30.0" top="11.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="services" onMouseClicked="#Magasin" prefHeight="43.0" prefWidth="120.0" styleClass="menu_item" text="Magasin" textFill="#837f7f">
+                        <Label fx:id="services" prefHeight="43.0" prefWidth="120.0" styleClass="menu_item" text="Magasin" textFill="#837f7f">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -61,7 +61,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="produits" onMouseClicked="#Produit" prefHeight="43.0" prefWidth="120.0" styleClass="menu_item" text="Produits" textFill="#837f7f">
+                        <Label fx:id="produits" onMouseClicked="#ClickProduit" prefHeight="43.0" prefWidth="120.0" styleClass="menu_item" text="Produits" textFill="#837f7f">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -69,7 +69,7 @@
                               <Insets bottom="11.0" left="23.0" top="11.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="evenements" onMouseClicked="#Evenement" prefHeight="43.0" prefWidth="120.0" styleClass="menu_item" text="Evenements" textFill="#837f7f">
+                        <Label fx:id="evenements" prefHeight="43.0" prefWidth="120.0" styleClass="menu_item" text="Evenements" textFill="#837f7f">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -77,15 +77,7 @@
                               <Insets bottom="11.0" left="8.0" top="11.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="espace" onMouseClicked="#Reclamation" prefHeight="49.0" prefWidth="122.0" styleClass="menu_item" text="Reclamations" textFill="#837f7f">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="11.0" left="8.0" top="11.0" />
-                           </padding>
-                        </Label>
-                        <Label fx:id="espace1" onMouseClicked="#Reclamation" prefHeight="49.0" prefWidth="120.0" styleClass="menu_item" text="Annonces" textFill="#837f7f">
+                        <Label fx:id="espace" prefHeight="49.0" prefWidth="201.0" styleClass="menu_item" text="Reclamations" textFill="#837f7f">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -101,12 +93,12 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </Label>
-                        <FontAwesomeIconView glyphName="CART_PLUS" glyphStyle="-fx-fill:#db4f4f" onMouseClicked="#Panier" size="2em">
+                        <FontAwesomeIconView glyphName="CART_PLUS" glyphStyle="-fx-fill:#db4f4f" size="2em">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </FontAwesomeIconView>
-                        <FontAwesomeIconView glyphName="GEAR" glyphStyle="-fx-fill:#db4f4f" layoutX="944.0" layoutY="44.0" onMouseClicked="#Profil" size="2em">
+                        <FontAwesomeIconView glyphName="GEAR" glyphStyle="-fx-fill:#db4f4f" layoutX="944.0" layoutY="44.0" size="2em">
                            <HBox.margin>
                               <Insets left="12.0" />
                            </HBox.margin>
@@ -222,8 +214,7 @@
                   <Button fx:id="supp" layoutX="328.0" layoutY="432.0" mnemonicParsing="false" onAction="#handleSuppBtn" prefHeight="32.0" prefWidth="77.0" style="-fx-cursor: hand;" stylesheets="file:/C:/Users/HP/Desktop/piJava/style2.css" text="Supprimer" textFill="#dd0f0f" />
                   <Label fx:id="lidp" layoutX="429.0" layoutY="77.0" text="Label" visible="false" />
                   <SnapshotView />
-                  <Button fx:id="ajoutPromo" layoutX="528.0" layoutY="383.0" mnemonicParsing="false" onAction="#handleAjoutPromoBtn" prefHeight="32.0" prefWidth="152.0" style="-fx-cursor: hand;" stylesheets="file:/C:/Users/HP/Desktop/piJava/style2.css" text="Ajouter une Promotion " textFill="#dd0f0f" />
-                  <Button fx:id="modifpro" layoutX="528.0" layoutY="432.0" mnemonicParsing="false" onAction="#handleAjoutPromoBtn" prefHeight="32.0" prefWidth="152.0" style="-fx-cursor: hand;" stylesheets="file:/C:/Users/HP/Desktop/piJava/style2.css" text="modifier  Promotion " textFill="#dd0f0f" />
+                  <Button fx:id="ajoutPromo" layoutX="533.0" layoutY="432.0" mnemonicParsing="false" onAction="#handleAjoutPromoBtn" prefHeight="32.0" prefWidth="152.0" style="-fx-cursor: hand;" stylesheets="file:/C:/Users/HP/Desktop/piJava/style2.css" text="Ajouter une Promotion " textFill="#dd0f0f" />
                </children>
             </AnchorPane>
         </items>

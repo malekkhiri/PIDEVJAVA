@@ -85,22 +85,18 @@ public class ValiderPController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
         try {
             ListeProduit();
-        } catch (SQLException ex) {
-            Logger.getLogger(ValiderPController.class.getName()).log(Level.SEVERE, null, ex);
-        }
             TableViewP.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue) ->{
-                
                 try {
                     selectAction(newValue);
                 } catch (SQLException ex) {
                     Logger.getLogger(ValiderPController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-               
             });
-        
+        } catch (SQLException ex) {
+            Logger.getLogger(ValiderPController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
     
     private void ListeProduit() throws SQLException{
@@ -123,9 +119,9 @@ public class ValiderPController implements Initializable {
      LPPrix.setText(String.valueOf(produit.getPrix()));
      LPQ.setText(String.valueOf(produit.getQuantite()));
      LPDes.setText(String.valueOf(produit.getDescription()));
-//     lidp.setText(String.valueOf(produit.getId_Produit()));
+     lidp.setText(String.valueOf(produit.getId_Produit()));
      ServiceProduit sc= new ServiceProduit();
-     nvendeur.setText(String.valueOf(sc.recupusername(produit.getId_Produit())));
+     nvendeur.setText(String.valueOf(produit.getId_utilisateur()));
      
  
  }
@@ -230,73 +226,10 @@ ListeProduit();
      }
      
      
-      @FXML
+     @FXML
     private void ClickProduit(MouseEvent event) throws IOException {
 
  try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("validerP.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }
-    }
-@FXML
-    private void ClickMagasin(MouseEvent event) {
-        
-       try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("ValiderMagasin.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }
-   
-    }
-    
-    @FXML
-    private void ClickEvenement(MouseEvent event) {
-        
-        try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("AdminEvenement.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }
-    
-}
-     @FXML
-    private void Clickhome(MouseEvent event) {
-        
-        try {
               Parent home_page_parent = FXMLLoader.load(getClass().getResource("HomeAdmin.fxml"));
         Scene home_page_scene = new Scene(home_page_parent);
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -312,7 +245,7 @@ ListeProduit();
            
         
     }
-    
-}
+    }
+     
     
 }

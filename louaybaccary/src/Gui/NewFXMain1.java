@@ -57,7 +57,7 @@ public class NewFXMain1 extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
       
-        Parent root = FXMLLoader.load(getClass().getResource("Acceuil.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("UserDocument.fxml"));
 //        Button btn = new Button();
 //        btn.setText("Say 'Hello World'");
 //        btn.setOnAction(new EventHandler<ActionEvent>() {

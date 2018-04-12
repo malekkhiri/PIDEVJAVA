@@ -11,15 +11,11 @@ import Entity.User;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 import service.ServicePromo;
@@ -30,18 +26,7 @@ import service.ServicePromo;
  * @author HP
  */
 
-
 public class PromoController implements Initializable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 private Stage dialogStage;
     private boolean btnClicked = false;
     private Promotion promo;
@@ -77,7 +62,7 @@ private int day;
     private Button buttonConfirmer;
 
     @FXML
-    private ComboBox<String> choicebox;
+    private ChoiceBox<String> choicebox;
 
     public Stage getDialogStage() {
         return dialogStage;
@@ -155,6 +140,13 @@ private int day;
         this.buttonConfirmer = buttonConfirmer;
     }
 
+    public ChoiceBox<String> getChoicebox() {
+        return choicebox;
+    }
+
+    public void setChoicebox(ChoiceBox<String> choicebox) {
+        this.choicebox = choicebox;
+    }
     
     
 
@@ -164,27 +156,6 @@ private int day;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-    
-    
-         ArrayList<String> combo = new ArrayList<>();
-        
-    
-                combo.add("none");
-        combo.add("70%");
-        combo.add("60%");
-        combo.add("50%");
-        combo.add("40%");
-        combo.add("30%");
-        combo.add("20%");
-        combo.add("10%");
-        
-     
-        ObservableList<String> ComboData = FXCollections.observableArrayList(combo);
-        for(String s : ComboData){
-            choicebox.getItems().add(s);
-        }
-    
     } 
     
     
@@ -195,149 +166,16 @@ private int day;
         NewFXMain1 main=new NewFXMain1();
         produit=main.getP();
         user= main.getU();
-        if(choicebox.getValue().equals("70%")){
-            
-           Promotion promotion = new Promotion(java.sql.Date.valueOf(debut.getValue()),java.sql.Date.valueOf(s.getValue()),(float)0.7,produit.getId_Produit(),user.getId());
-            
-           ServicePromo sp=new ServicePromo();
-           boolean F=sp.Exist(promotion.getId_Produit());
-            System.out.println(F);
-           if(F==false){
-           sp.insertPromo(promotion);
+        
+          Promotion promotion = new Promotion(java.sql.Date.valueOf(debut.getValue()),java.sql.Date.valueOf(s.getValue()),(float)0.5,produit.getId_Produit(),user.getId());
+            ServicePromo sp=new ServicePromo();
+            sp.insertPromo(promotion);
           btnClicked=true;
-            dialogStage.close(); 
-           }else{
-               
-               sp.updateProduit(promotion);
-          btnClicked=true;
-            dialogStage.close(); 
-           }
-        }
-       if(choicebox.getValue().equals("60%")){
-            
-           Promotion promotion = new Promotion(java.sql.Date.valueOf(debut.getValue()),java.sql.Date.valueOf(s.getValue()),(float)0.6,produit.getId_Produit(),user.getId());
-            
-           ServicePromo sp=new ServicePromo();
-           boolean F=sp.Exist(promotion.getId_Produit());
-            System.out.println(F);
-           if(F==false){
-           sp.insertPromo(promotion);
-          btnClicked=true;
-            dialogStage.close(); 
-           }else{
-               
-               sp.updateProduit(promotion);
-          btnClicked=true;
-            dialogStage.close(); 
-           }
-        }if(choicebox.getValue().equals("50%")){
-            
-           Promotion promotion = new Promotion(java.sql.Date.valueOf(debut.getValue()),java.sql.Date.valueOf(s.getValue()),(float)0.5,produit.getId_Produit(),user.getId());
-            
-           ServicePromo sp=new ServicePromo();
-           boolean F=sp.Exist(promotion.getId_Produit());
-            System.out.println(F);
-           if(F==false){
-           sp.insertPromo(promotion);
-          btnClicked=true;
-            dialogStage.close(); 
-           }else{
-               
-               sp.updateProduit(promotion);
-          btnClicked=true;
-            dialogStage.close(); 
-           }
-        }if(choicebox.getValue().equals("40%")){
-            
-           Promotion promotion = new Promotion(java.sql.Date.valueOf(debut.getValue()),java.sql.Date.valueOf(s.getValue()),(float)0.4,produit.getId_Produit(),user.getId());
-            
-           ServicePromo sp=new ServicePromo();
-           boolean F=sp.Exist(promotion.getId_Produit());
-            System.out.println(F);
-           if(F==false){
-           sp.insertPromo(promotion);
-          btnClicked=true;
-            dialogStage.close(); 
-           }else{
-               
-               sp.updateProduit(promotion);
-          btnClicked=true;
-            dialogStage.close(); 
-           }
-        }if(choicebox.getValue().equals("30%")){
-            
-           Promotion promotion = new Promotion(java.sql.Date.valueOf(debut.getValue()),java.sql.Date.valueOf(s.getValue()),(float)0.3,produit.getId_Produit(),user.getId());
-            
-           ServicePromo sp=new ServicePromo();
-           boolean F=sp.Exist(promotion.getId_Produit());
-            System.out.println(F);
-           if(F==false){
-           sp.insertPromo(promotion);
-          btnClicked=true;
-            dialogStage.close(); 
-           }else{
-               
-               sp.updateProduit(promotion);
-          btnClicked=true;
-            dialogStage.close(); 
-           }
-        }if(choicebox.getValue().equals("20%")){
-            
-           Promotion promotion = new Promotion(java.sql.Date.valueOf(debut.getValue()),java.sql.Date.valueOf(s.getValue()),(float)0.2,produit.getId_Produit(),user.getId());
-            
-           ServicePromo sp=new ServicePromo();
-           boolean F=sp.Exist(promotion.getId_Produit());
-            System.out.println(F);
-           if(F==false){
-           sp.insertPromo(promotion);
-          btnClicked=true;
-            dialogStage.close(); 
-           }else{
-               
-               sp.updateProduit(promotion);
-          btnClicked=true;
-            dialogStage.close(); 
-           }
-        }
-        if(choicebox.getValue().equals("10%")){
-            
-           Promotion promotion = new Promotion(java.sql.Date.valueOf(debut.getValue()),java.sql.Date.valueOf(s.getValue()),(float)0.1,produit.getId_Produit(),user.getId());
-            
-           ServicePromo sp=new ServicePromo();
-           boolean F=sp.Exist(promotion.getId_Produit());
-            System.out.println(F);
-           if(F==false){
-           sp.insertPromo(promotion);
-          btnClicked=true;
-            dialogStage.close(); 
-           }else{
-               
-               sp.updateProduit(promotion);
-          btnClicked=true;
-            dialogStage.close(); 
-           }
-        }
-        if(choicebox.getValue().equals("none")){
-            
-           Promotion promotion = new Promotion(java.sql.Date.valueOf(debut.getValue()),java.sql.Date.valueOf(s.getValue()),(float)0,produit.getId_Produit(),user.getId());
-            
-           ServicePromo sp=new ServicePromo();
-           boolean F=sp.Exist(promotion.getId_Produit());
-            System.out.println(F);
-           if(F==false){
-           sp.insertPromo(promotion);
-          btnClicked=true;
-            dialogStage.close(); 
-           }else{
-               
-               sp.updateProduit(promotion);
-          btnClicked=true;
-            dialogStage.close(); 
-           }
-        }
+            dialogStage.close();
     }}
                 
  
+    @FXML
     public void handleButtonAnnuler() {
         dialogStage.close();
     }

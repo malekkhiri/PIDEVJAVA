@@ -32,7 +32,7 @@ import service.GestionMagasin;
  * @author Hosni
  */
 public class MagasinFrontController implements Initializable {
-
+private int  iduser;
     @FXML
     private AnchorPane anchorPane;
     @FXML
@@ -60,8 +60,9 @@ public class MagasinFrontController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
         NewFXMain1 main = new NewFXMain1();
+        iduser = main.u.getId();
+          System.out.println(iduser);
          if (main.u.getRoles().equals("a:1:{i:0;s:12:\"ROLE_VENDEUR\";}")) {
             btnVend.setVisible(true);
             
@@ -114,192 +115,8 @@ public class MagasinFrontController implements Initializable {
     }
     }
 
-    
-    @FXML
-    private void Produit (MouseEvent event) throws IOException
-    {
-        
-        
-       try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }
-    }
-    
-    @FXML
-    private void Magasin (MouseEvent event) throws IOException
-    {
-        
-        
-       try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("MagasinFront.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }}
-    
-    
-    @FXML
-    private void Evenement (MouseEvent event) throws IOException
-    {
-        
-        
-      
-           NewFXMain1 main= new NewFXMain1();
-           try{
-           if(main.u.getRoles().equals("a:1:{i:0;s:12:\"ROLE_VENDEUR\";}")){
-                
-                Parent home_page_parent = FXMLLoader.load(getClass().getResource("Vendeur.fxml"));
-                 Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-      
-           }
-              
-     
-           else if (main.u.getRoles().equals("a:1:{i:0;s:16:\"ROLE_UTILISATEUR\";}")){
-              
-                             Parent home_page_parent = FXMLLoader.load(getClass().getResource("GestionEvenementnterfaceController.fxml"));
-  Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-           }                  
-           else{
-               System.out.println("erreur");
-           }
-             
-       
-    
-    } catch (IOException ex) {
-           
-               }    
-    }
-    
-    
-    
-    @FXML
-    private void Panier (MouseEvent event) throws IOException
-    {
-        
-        
-       try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("PanierFXML.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }
-}
 
-
-@FXML
-    private void Profil (MouseEvent event) throws IOException
-    {
-        
-        
-      
-           NewFXMain1 main= new NewFXMain1();
-           try{
-           if(main.u.getRoles().equals("a:1:{i:0;s:12:\"ROLE_VENDEUR\";}")){
-                
-                Parent home_page_parent = FXMLLoader.load(getClass().getResource("ProfilVendeurFXML.fxml"));
-                 Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-      
-           }
-              
-     
-           else if (main.u.getRoles().equals("a:1:{i:0;s:16:\"ROLE_UTILISATEUR\";}")){
-              
-                             Parent home_page_parent = FXMLLoader.load(getClass().getResource("PofilClientFXML.fxml"));
-  Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-           }                  
-           else{
-               System.out.println("erreur");
-           }
-             
-       
-    
-    } catch (IOException ex) {
-           
-               }    
-    }
-    
-
-  @FXML
-    private void Reclamation (MouseEvent event) throws IOException
-    {
-        
-        
-       try {
-              Parent home_page_parent = FXMLLoader.load(getClass().getResource("ReclamationRS.fxml"));
-        Scene home_page_scene = new Scene(home_page_parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-          
-            
-                //app_stage.hide(); //optional
-                app_stage.setScene(home_page_scene);
-                app_stage.show();  
-            
-        
-            
-        } catch (IOException ex) {
-           
-        
-    }
-}
-    
-          @FXML
+     @FXML
     private void ClickMenu(MouseEvent event) throws IOException {
 
  try {
@@ -319,7 +136,5 @@ public class MagasinFrontController implements Initializable {
         
     }
     }
-
-    
 }
 

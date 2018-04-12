@@ -125,8 +125,8 @@ if(p.getValidated()==1){
       public String recupusername(int id) throws SQLException {
         String p = null;
         try {
-            String req = "Select `username`   from `user` u join `produit` e on e.id_utilisateur = u.id"
-                    + " where e.id_utilisateur='" + id+"'";
+            String req = "Select `username`   from `user` u join `produit` e on e.username = u.id"
+                    + " where id_Produit=" + id;
 
             statement=conn.createStatement();
             rs=statement.executeQuery(req);
@@ -135,11 +135,11 @@ if(p.getValidated()==1){
                 System.out.println(p);
             }
 
-            
+            return p;
         } catch (SQLException ex) {
             System.out.println(ex);
             return "erreeeeeur pseudo";
-        }return p;
+        }
     }
       
      public void updatePV(Produit produit){
@@ -350,22 +350,6 @@ if(p.getValidated()==1){
         } catch (SQLException ex) {
             System.out.println(ex);
             return "erreeeeeur pseudo";
-        }
-        
-    }
-       
-       
-         public void supprimerProduitM(int idM){
-        List<Produit> liste=new ArrayList<>();
-        String req="DELETE FROM `produit` WHERE id_magasin='"+idM+"'";
-        try {
-            PreparedStatement ste= conn.prepareStatement(req);
-            
-        
-            ste.executeUpdate();
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ServiceProduit.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
