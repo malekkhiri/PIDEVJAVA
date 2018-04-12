@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ShowAnnonceController">
+   <children>
+      <VBox layoutX="45.0" layoutY="14.0" prefHeight="387.0" prefWidth="191.0">
+         <children>
+            <VBox prefHeight="316.0" prefWidth="191.0">
+               <children>
+                  <ImageView fx:id="img" fitHeight="210.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </VBox>
+            <VBox prefHeight="91.0" prefWidth="191.0">
+               <children>
+                  <JFXButton fx:id="favorisBtn" onAction="#addToWishlist" prefHeight="25.0" prefWidth="193.0" text="Ajouter au Favoris" />
+                  <JFXButton fx:id="modifierBtn" onAction="#Edit" prefHeight="25.0" prefWidth="193.0" text="Modifer" visible="false" />
+                  <JFXButton fx:id="supprimerBtn" onAction="#Delete" prefHeight="25.0" prefWidth="193.0" text="Supprimer" visible="false" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox layoutX="237.0" layoutY="227.0" prefHeight="173.0" prefWidth="364.0" />
+      <HBox layoutX="245.0" layoutY="52.0" prefHeight="173.0" prefWidth="356.0">
+         <children>
+            <VBox prefHeight="173.0" prefWidth="121.0">
+               <children>
+                  <Label text="Titre :" />
+                  <Label text="Description : " />
+                  <Label text="Vendeur : " />
+                  <Label text="Telephone : " />
+                  <Label text="Prix : " />
+                  <Label text="Date de Publication : " />
+                  <Label text="Region : " />
+                  <Label text="Ville : " />
+               </children>
+               <opaqueInsets>
+                  <Insets left="10.0" />
+               </opaqueInsets>
+            </VBox>
+            <VBox prefHeight="219.0" prefWidth="183.0">
+               <children>
+                  <Label fx:id="titre" />
+                  <Label fx:id="description" />
+                  <Label fx:id="vendeur" />
+                  <Label fx:id="telephone" />
+                  <Label fx:id="labregion" />
+                  <Label fx:id="prix" />
+                  <Label fx:id="datepublication" />
+                  <Label fx:id="labville" />
+                  <Label fx:id="imagname" visible="false" />
+                  <Label fx:id="idannonce" disable="true" visible="false" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

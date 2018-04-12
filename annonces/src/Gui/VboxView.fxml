@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="vbox" prefHeight="139.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.VboxViewController">
+   <children>
+      <VBox layoutX="1.0" prefHeight="200.0" prefWidth="600.0">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="153.0" layoutX="173.0" layoutY="23.0" stroke="BLACK" strokeType="INSIDE" width="427.0">
+                     <fill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop color="#b56262" />
+                              <Stop color="#8f1733" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Rectangle>
+                  <ImageView fx:id="imageP" fitHeight="174.0" fitWidth="159.0" layoutX="11.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="id" layoutX="541.0" layoutY="13.0" text="Label" visible="false" />
+                  <Label fx:id="nomP" layoutX="216.0" layoutY="32.0" onMouseClicked="#afficherDetaille" prefHeight="39.0" prefWidth="348.0" style="-fx-cursor: hand;" text="nom" textFill="WHITE">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="PrixP" layoutX="214.0" layoutY="80.0" prefHeight="34.0" prefWidth="359.0" text="Label" textFill="#e8e6e6">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="DescP" layoutX="221.0" layoutY="130.0" prefHeight="17.0" prefWidth="124.0" text="Label" textFill="#f5f3f3" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

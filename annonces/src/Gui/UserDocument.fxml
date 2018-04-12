@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="738.0" prefWidth="1031.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.UserDocumentController">
+   <children>
+      <AnchorPane layoutX="615.0" layoutY="115.0" prefHeight="446.0" prefWidth="353.0" style="-fx-background-color: #9c2b27;">
+         <children>
+            <JFXTextField fx:id="Nom" focusColor="#207f18" layoutX="50.0" layoutY="81.0" prefHeight="33.0" prefWidth="236.0" promptText="Username" unFocusColor="#d0bfbf">
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                      
+                     </light>
+                  </Lighting>
+               </effect>
+            </JFXTextField>
+            <JFXPasswordField fx:id="pass" focusColor="#207f18" layoutX="49.0" layoutY="167.0" prefHeight="25.0" prefWidth="236.0" promptText="Password" unFocusColor="#d0bfbf">
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        
+                     </light>
+                  </Lighting>
+               </effect>
+            </JFXPasswordField>
+            <Button fx:id="login" layoutX="25.0" layoutY="254.0" mnemonicParsing="false" onAction="#LoginAction" prefHeight="25.0" prefWidth="291.0" style="-fx-background-color: #e45652; -fx-cursor: hand;" text="Connecter" textFill="#fffefe" />
+            <Label layoutX="135.0" layoutY="32.0" prefHeight="49.0" prefWidth="125.0" text="S'identifier" textFill="#fffbfb">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="744.0" fitWidth="571.0" layoutX="2.0" opacity="0.22" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/C:/Users/HP/Desktop/dd.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="105.0" layoutY="170.0" opacity="0.66" text="Welcome to Souk El Madina " textFill="#fcf9f9">
+         <font>
+            <Font name="Berlin Sans FB" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="87.0" layoutY="325.0" prefHeight="33.0" prefWidth="236.0" text="Prenez votre temps en vous" textFill="#fffdfd">
+         <font>
+            <Font name="Bookman Old Style" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="126.0" layoutY="378.0" text=" promenant et découvrez les trésors cachés" textFill="WHITE">
+         <font>
+            <Font name="Bookman Old Style" size="16.0" />
+         </font>
+      </Label>
+      <Button layoutX="107.0" layoutY="446.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="291.0" style="-fx-background-color: #e45652; -fx-cursor: hand;" text="Créer Un Compte" textFill="#fffefe" />
+   </children>
+</AnchorPane>

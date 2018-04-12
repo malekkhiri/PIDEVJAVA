@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="558.0" prefWidth="1186.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.ValiderPController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" prefHeight="574.0" prefWidth="1152.0" styleClass="mainFxmlClass">
+         <children>
+            <VBox layoutX="312.0" layoutY="-10.0" prefHeight="595.0" prefWidth="867.0">
+               <children>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="867.0" style="-fx-background-color: #fff;">
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" color="#4ca9c3" height="29.06" radius="9.265" spread="0.07" width="10.0" />
+                     </effect>
+                     <children>
+                        <ImageView fx:id="imageViewP" fitHeight="86.0" fitWidth="86.0" layoutX="21.0" layoutY="-4.0" onMouseClicked="#ClickProduit" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../utils/assets/logo2.png" />
+                           </image>
+                        </ImageView>
+                        <FontAwesomeIconView glyphName="BELL" glyphStyle="-fx-fill: #db4f4f" layoutX="808.0" layoutY="46.0" size="1.5em" />
+                        <FontAwesomeIconView glyphName="GEAR" glyphStyle="-fx-fill: #db4f4f" layoutX="839.0" layoutY="46.0" size="1.5em" />
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox layoutX="-11.0" layoutY="-11.0" prefHeight="584.0" prefWidth="332.0" style="-fx-background-color: #333645;">
+               <children>
+                  <Label prefHeight="75.0" prefWidth="332.0" style="-fx-background-color: #db4f4f;" text="                  Admin Panel" textFill="WHITE">
+                     <font>
+                        <Font name="Ebrima" size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <FontAwesomeIconView glyphName="SEARCH" glyphStyle="-fx-fill:#7C8184" size="1.3em" />
+                        <TextField accessibleRole="TEXT_FIELD" cacheShape="false" mouseTransparent="true" prefHeight="25.0" prefWidth="290.0" promptText="Search" style="-fx-background-color: transparent; -fx-text-inner-color: #7c8184;" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="Arial Unicode MS" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="95.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="332.0" styleClass="btns" stylesheets="@css/HomeAdmin.css">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <children>
+                        <FontAwesomeIconView glyphName="CART_PLUS" glyphStyle="-fx-fill:#7C8184" size="2em" />
+                        <Label text="Gestion Produits" textFill="#7c8184">
+                           <font>
+                              <Font name="Calibri Light" size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox fx:id="ev" alignment="CENTER_LEFT" layoutX="10.0" layoutY="132.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="332.0" styleClass="btns" stylesheets="@css/HomeAdmin.css">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <children>
+                        <FontAwesomeIconView glyphName="CALENDAR" glyphStyle="-fx-fill:#7C8184" size="2em" />
+                        <Label text="Gestion Evenements" textFill="#7c8184">
+                           <font>
+                              <Font name="Calibri Light" size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="172.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="332.0" styleClass="btns" stylesheets="@css/HomeAdmin.css">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <children>
+                        <FontAwesomeIconView glyphName="USERS" glyphStyle="-fx-fill:#7C8184" size="2em" />
+                        <Label text="Gestion Utilisateurs" textFill="#7c8184">
+                           <font>
+                              <Font name="Calibri Light" size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="212.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="332.0" styleClass="btns" stylesheets="@css/HomeAdmin.css">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <children>
+                        <FontAwesomeIconView glyphName="GEAR" glyphStyle="-fx-fill:#7C8184" size="2em" text="" />
+                        <Label text="Gestion Magasins" textFill="#7c8184">
+                           <font>
+                              <Font name="Calibri Light" size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="252.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="332.0" styleClass="btns" stylesheets="@css/HomeAdmin.css">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <children>
+                        <FontAwesomeIconView glyphName="CART_PLUS" glyphStyle="-fx-fill:#7C8184" size="2em" />
+                        <Label text="Gestion Commandes" textFill="#7c8184">
+                           <font>
+                              <Font name="Calibri Light" size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="292.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="332.0" styleClass="btns" stylesheets="@css/HomeAdmin.css">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <children>
+                        <FontAwesomeIconView glyphName="TH" glyphStyle="-fx-fill:#7C8184" size="2em" />
+                        <Label text="Gestion Reclamtion" textFill="#7c8184">
+                           <font>
+                              <Font name="Calibri Light" size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <TableView fx:id="TableViewP" layoutX="768.0" layoutY="187.0" prefHeight="331.0" prefWidth="330.0">
+        <columns>
+          <TableColumn fx:id="pseudoV" prefWidth="139.0" text="Nom du Vendeur" />
+          <TableColumn fx:id="NomP" prefWidth="102.0" text="Produit" />
+            <TableColumn fx:id="PrixP" prefWidth="89.0" text="Prix" />
+        </columns>
+      </TableView>
+      <Label layoutX="869.0" layoutY="142.0" text="Liste des Produits" textFill="#ab3939">
+         <font>
+            <Font name="Bodoni MT" size="17.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnRetour2" layoutX="395.0" layoutY="542.0" mnemonicParsing="false" onAction="#handleValideBtn" prefHeight="25.0" prefWidth="66.0" text="Valider" />
+      <Button fx:id="btnRetour1" layoutX="502.0" layoutY="542.0" mnemonicParsing="false" onAction="#handleSuppBtn" text="Supprimer" />
+      <GridPane layoutX="373.0" layoutY="189.0" prefHeight="292.0" prefWidth="371.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="Nom du Produit" />
+            <Label text="Prix" GridPane.rowIndex="1" />
+            <Label text="Quantitées" GridPane.rowIndex="2" />
+            <Label text="Description" GridPane.rowIndex="3" />
+            <Label fx:id="LPNom" text="Label" GridPane.columnIndex="1" />
+            <Label fx:id="LPPrix" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="LPQ" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="LPDes" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Nom Vendeur" GridPane.rowIndex="4" />
+            <Label fx:id="nvendeur" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
